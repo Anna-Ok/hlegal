@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('/src/assets/icons/fonts/icomoon.eot?ha06xj');
+  src: url('/src/assets/icons/fonts/icomoon.eot?ha06xj#iefix') format('embedded-opentype'),
+    url('/src/assets/icons/fonts/icomoon.ttf?ha06xj') format('truetype'),
+    url('/src/assets/icons/fonts/icomoon.woff?ha06xj') format('woff'),
+    url('/src/assets/icons/fonts/icomoon.svg?ha06xj#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Coprorate:before { content: "\e900"; }
+
+.icon-Ecommerce .path1:before { content: "\e901"; color: rgb(0, 0, 0); }
+.icon-Ecommerce .path2:before { content: "\e902"; margin-left: -1em; color: rgb(0, 0, 0); }
+.icon-Ecommerce .path3:before { content: "\e903"; margin-left: -1em; color: rgb(255, 255, 255); }
+
+.icon-Court:before      { content: "\e904"; }
+.icon-Protection:before { content: "\e905"; }
+.icon-Support:before    { content: "\e906"; }
+.icon-Trust:before      { content: "\e908"; }
+
+.icon-Facebook-Header:before { content: "\e907"; }
