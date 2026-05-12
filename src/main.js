@@ -1,5 +1,16 @@
 import './styles/main.scss'
 
+// Preloader
+const preloader = document.getElementById('preloader');
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    preloader.classList.add('preloader--hidden');
+    document.body.classList.add('is-loaded');
+    preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
+  }, 1400);
+});
+
 // Custom cursor
 const cursor = document.querySelector('.cursor');
 
@@ -12,6 +23,63 @@ document.querySelectorAll('a, button, [data-tab]').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
 });
+
+// Active nav link on scroll
+const navLinks = document.querySelectorAll('.header__nav-link');
+const mobileLabel = document.querySelector('.header__mobile-label');
+const sections = document.querySelectorAll('section[id], footer[id]');
+
+const updateActiveSection = () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 100) {
+      current = section.id || current;
+    }
+  });
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href')?.replace('#', '');
+    link.classList.toggle('header__nav-link--active', href === current);
+  });
+
+  document.querySelectorAll('.header__mobile-nav-link').forEach(link => {
+    const href = link.getAttribute('href')?.replace('#', '');
+    link.classList.toggle('header__mobile-nav-link--active', href === current);
+  });
+
+  if (mobileLabel) {
+    mobileLabel.textContent = current.replace('-', ' ');
+  }
+};
+
+window.addEventListener('scroll', updateActiveSection, { passive: true });
+updateActiveSection();
+
+// Burger menu
+const burger = document.querySelector('.header__burger');
+const mobileMenu = document.querySelector('.header__mobile-menu');
+
+const closeMenu = () => {
+  mobileMenu.classList.remove('header__mobile-menu--open');
+  burger.classList.remove('header__burger--open');
+  document.body.style.overflow = '';
+};
+
+if (burger && mobileMenu) {
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('header__mobile-menu--open');
+    burger.classList.toggle('header__burger--open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) updateActiveSection();
+  });
+
+  mobileMenu.querySelector('.header__mobile-menu-close')?.addEventListener('click', closeMenu);
+  mobileMenu.querySelector('.header__mobile-menu-overlay')?.addEventListener('click', closeMenu);
+
+  mobileMenu.querySelectorAll('.header__mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+}
 
 // Language switcher
 const langLinks = document.querySelectorAll('.header__lang-link');
@@ -35,6 +103,33 @@ aboutItems.forEach(item => {
     aboutPanels.forEach(p => p.classList.remove('about__panel--active'));
     item.classList.add('about__list-item--active');
     document.querySelector(`.about__panel[data-tab="${tab}"]`).classList.add('about__panel--active');
+  });
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const delay = Number(el.dataset.delay || 0);
+    setTimeout(() => el.classList.add('is-visible'), delay);
+    revealObserver.unobserve(el);
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+requestAnimationFrame(() => {
+  [
+    { sel: '.services__item', type: '',      step: 80  },
+    { sel: '.clients__item',  type: 'scale', step: 45  },
+    { sel: '.publications__card', type: '',  step: 120 },
+  ].forEach(({ sel, type, step }) => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.setAttribute('data-reveal', type);
+      el.dataset.delay = i * step;
+      revealObserver.observe(el);
+    });
   });
 });
 

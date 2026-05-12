@@ -11,13 +11,30 @@
   </head>
   <body>
 
+    <div class="preloader" id="preloader">
+      <img src="./src/assets/logo.svg" alt="hlegal" class="preloader__logo" />
+      <div class="preloader__bar"><div class="preloader__progress"></div></div>
+    </div>
+
     <div class="cursor"></div>
 
     <header class="header">
+      <div class="header__mobile-top">
+        <div class="header__lang">
+          <a href="#" class="header__lang-link">УК</a>
+          <a href="#" class="header__lang-link">РУ</a>
+          <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+        </div>
+        <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+      </div>
       <div class="header__inner">
         <a href="/" class="header__logo">
           <img src="./src/assets/logo.svg" alt="hlegal law company" class="header__logo-img" />
         </a>
+        <span class="header__mobile-label">services</span>
+        <button class="header__burger" aria-label="Меню">
+          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+        </button>
         <div class="header__right">
           <div class="header__top">
             <div class="header__lang">
@@ -35,10 +52,25 @@
           <nav class="header__nav">
             <ul class="header__nav-list">
               <li class="header__nav-item"><a href="#about" class="header__nav-link">about us</a></li>
-              <li class="header__nav-item"><a href="#services" class="header__nav-link">services</a></li>
-              <li class="header__nav-item"><a href="#team" class="header__nav-link">team</a></li>
+              <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
+              <li class="header__nav-item"><a href="/team.html" class="header__nav-link">team</a></li>
               <li class="header__nav-item"><a href="#publications" class="header__nav-link">publications</a></li>
-              <li class="header__nav-item"><a href="#contact" class="header__nav-link">contact</a></li>
+              <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="header__mobile-menu" id="mobileMenu">
+        <div class="header__mobile-menu-overlay"></div>
+        <div class="header__mobile-menu-panel">
+          <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
+          <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+              <li><a href="#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/services.html" class="header__mobile-nav-link">services</a></li>
+              <li><a href="/team.html" class="header__mobile-nav-link">team</a></li>
+              <li><a href="#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
             </ul>
           </nav>
         </div>
@@ -59,7 +91,7 @@
 
       <section class="about" id="about">
         <div class="about__inner">
-          <div class="about__features">
+          <div class="about__features" data-reveal="left">
             <ul class="about__list">
               <li class="about__list-item about__list-item--active" data-tab="consistent">Consistent</li>
               <li class="about__list-item" data-tab="customer">Customer oriented</li>
@@ -67,7 +99,7 @@
               <li class="about__list-item" data-tab="business">Business oriented</li>
             </ul>
           </div>
-          <div class="about__content">
+          <div class="about__content" data-reveal="right">
             <div class="about__panel about__panel--active" data-tab="consistent">
               <h2 class="about__title">We turn the idea of legal services</h2>
               <p class="about__text">Consolidating many years of experience and practice, the company's lawyers accompany complex projects and achieve a number of important decisions for the industry. Many of them form the practice of applying the law of the sea in Ukraine.</p>
@@ -90,38 +122,50 @@
 
       <section class="services" id="services">
         <div class="services__inner">
-          <p class="services__label">SERVICES ›</p>
-          <h2 class="services__title">What can we do better than others?</h2>
+          <p class="services__label" data-reveal>SERVICES <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
+          <h2 class="services__title" data-reveal data-delay="120">What can we do better than others?</h2>
           <ul class="services__list">
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Ecommerce"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span></div>
-              <h3 class="services__item-title">IT and e-commerce</h3>
-              <p class="services__item-text">An endless stream of contracts, tax issues, labor relations, corporate papers — legal work distracts you from doing business. But there is not much work to do to hire an in-house lawyer.</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Ecommerce"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span></div>
+                <h3 class="services__item-title">IT and e-commerce</h3>
+                <p class="services__item-text">An endless stream of contracts, tax issues, labor relations, corporate papers — legal work distracts you from doing business. But there is not much work to do to hire an in-house lawyer.</p>
+              </a>
             </li>
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Support"></span></div>
-              <h3 class="services__item-title">Comprehensive daily legal support</h3>
-              <p class="services__item-text">In addition, over time, the work will become the same type and uninteresting for a full-time lawyer. And we know very well how difficult it is to find a good candidate with experience in the field of information technology in Ukraine.</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Support"></span></div>
+                <h3 class="services__item-title">Comprehensive daily legal support</h3>
+                <p class="services__item-text">In addition, over time, the work will become the same type and uninteresting for a full-time lawyer. And we know very well how difficult it is to find a good candidate with experience in the field of information technology in Ukraine.</p>
+              </a>
             </li>
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Coprorate"></span></div>
-              <h3 class="services__item-title">Structuring corporate relationships</h3>
-              <p class="services__item-text">Instead of just providing legal services, we will hire a lawyer or a whole team that will fit into the daily life of your company.</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Coprorate"></span></div>
+                <h3 class="services__item-title">Structuring corporate relationships</h3>
+                <p class="services__item-text">Instead of just providing legal services, we will hire a lawyer or a whole team that will fit into the daily life of your company.</p>
+              </a>
             </li>
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Trust"></span></div>
-              <h3 class="services__item-title">Building contractual relations</h3>
-              <p class="services__item-text">Once a week, or week after month, you have your own lawyer by your side. Anyone in the company can catch it at the coffee maker and just talk about current affairs instead of waiting for update status.</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Trust"></span></div>
+                <h3 class="services__item-title">Building contractual relations</h3>
+                <p class="services__item-text">Once a week, or week after month, you have your own lawyer by your side. Anyone in the company can catch it at the coffee maker and just talk about current affairs instead of waiting for update status.</p>
+              </a>
             </li>
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Protection"></span></div>
-              <h3 class="services__item-title">Protection of business, intellectual property</h3>
-              <p class="services__item-text">And all the other time he will work on new diverse projects, so he will definitely not stop in professional development. One way or another, all Axon Partners will work for you instead of a corporate lawyer.</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Protection"></span></div>
+                <h3 class="services__item-title">Protection of business, intellectual property</h3>
+                <p class="services__item-text">And all the other time he will work on new diverse projects, so he will definitely not stop in professional development. One way or another, all Axon Partners will work for you instead of a corporate lawyer.</p>
+              </a>
             </li>
             <li class="services__item">
-              <div class="services__item-icon"><span class="icon-Court"></span></div>
-              <h3 class="services__item-title">Judicial representation</h3>
-              <p class="services__item-text">Is it a small, medium-sized company or a market leader? Local business or multinational company? Do you have your own legal department or not?</p>
+              <a href="/service.html" class="services__item-link">
+                <div class="services__item-icon"><span class="icon-Court"></span></div>
+                <h3 class="services__item-title">Judicial representation</h3>
+                <p class="services__item-text">Is it a small, medium-sized company or a market leader? Local business or multinational company? Do you have your own legal department or not?</p>
+              </a>
             </li>
           </ul>
         </div>
@@ -130,13 +174,13 @@
       </div><!-- /.dark-bg -->
 
       <section class="team" id="team">
-        <div class="team__slider">
+        <div class="team__slider" data-reveal>
           <div class="team__track">
           <div class="team__slide team__slide--active">
             <div class="team__inner">
               <img src="./src/assets/team.webp" alt="Олександр Олександровський" class="team__photo" />
               <div class="team__content">
-                <p class="team__label">КОМАНДА ›</p>
+                <p class="team__label">КОМАНДА <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
                 <blockquote class="team__quote">Ми звикли брати на себе відповідальність та завжди гарантуємо чесну, вчасну допомогу, навіть у ситуаціях, коли більшість безсилі.</blockquote>
                 <p class="team__name">Олександр Олександровський</p>
                 <p class="team__role">Керуючий партнер</p>
@@ -147,7 +191,7 @@
             <div class="team__inner">
               <img src="./src/assets/team.webp" alt="Олександр Олександровський" class="team__photo" />
               <div class="team__content">
-                <p class="team__label">КОМАНДА ›</p>
+                <p class="team__label">КОМАНДА <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
                 <blockquote class="team__quote">Ми звикли брати на себе відповідальність та завжди гарантуємо чесну, вчасну допомогу, навіть у ситуаціях, коли більшість безсилі.</blockquote>
                 <p class="team__name">Олександр Олександровський</p>
                 <p class="team__role">Керуючий партнер</p>
@@ -158,7 +202,7 @@
             <div class="team__inner">
               <img src="./src/assets/team.webp" alt="Олександр Олександровський" class="team__photo" />
               <div class="team__content">
-                <p class="team__label">КОМАНДА ›</p>
+                <p class="team__label">КОМАНДА <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
                 <blockquote class="team__quote">Ми звикли брати на себе відповідальність та завжди гарантуємо чесну, вчасну допомогу, навіть у ситуаціях, коли більшість безсилі.</blockquote>
                 <p class="team__name">Олександр Олександровський</p>
                 <p class="team__role">Керуючий партнер</p>
@@ -176,7 +220,7 @@
 
       <section class="clients">
         <div class="clients__inner">
-          <h2 class="clients__title">THEY ALREADY TRUST US</h2>
+          <h2 class="clients__title" data-reveal>THEY ALREADY TRUST US</h2>
           <ul class="clients__list">
             <li class="clients__item"><img src="./src/assets/hillel.svg" alt="hillel" /></li>
             <li class="clients__item"><img src="./src/assets/wann_biz.svg" alt="WannaBiz" /></li>
@@ -196,8 +240,8 @@
 
       <section class="publications" id="publications">
         <div class="publications__inner">
-          <p class="publications__label">PUBLICATIONS ›</p>
-          <h2 class="publications__title">We have something to tell</h2>
+          <p class="publications__label" data-reveal>PUBLICATIONS <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
+          <h2 class="publications__title" data-reveal data-delay="120">We have something to tell</h2>
           <ul class="publications__list">
             <li class="publications__item">
               <article class="publications__card">
@@ -236,7 +280,7 @@
     </main>
 
     <footer class="footer" id="contact">
-      <div class="footer__inner">
+      <div class="footer__inner" data-reveal>
         <div class="footer__left">
           <div class="footer__address-row">
             <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>

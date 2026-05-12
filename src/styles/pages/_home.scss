@@ -34,18 +34,35 @@
 // ─── HERO ────────────────────────────────────────────────────────────────────
 
 .hero {
-  height: 800px;
+  height: 600px;
   position: relative;
   overflow: hidden;
+
+  @media (min-width: $bp-md) {
+    height: 1024px;
+  }
+
+  @media (min-width: $bp-lg) {
+    height: 768px;
+  }
 
   &__decoration {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 800px;
+    height: 600px;
     width: auto;
+    max-width: none;
     pointer-events: none;
+
+    @media (min-width: $bp-md) {
+      height: 1024px;
+    }
+
+    @media (min-width: $bp-lg) {
+      height: 768px;
+    }
   }
 
   &__inner {
@@ -70,6 +87,11 @@
     width: 800px;
     max-width: 100%;
     margin: 0;
+    padding: 0 30px;
+
+    @media (min-width: $bp-md) {
+      padding: 0;
+    }
   }
 
   &__scroll {
@@ -111,7 +133,11 @@
 // ─── ABOUT ───────────────────────────────────────────────────────────────────
 
 .about {
-  padding: 60px;
+  padding: 60px 0;
+
+  @media (min-width: $bp-lg) {
+    padding: 60px;
+  }
 
   &__inner {
     max-width: 1600px;
@@ -127,35 +153,70 @@
 
   &__features {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 40px 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 30px;
+    }
 
     @media (min-width: $bp-lg) {
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
       width: 40%;
       padding: 48px 60px 48px 0;
       border-right: 4px solid rgba(255, 255, 255, 0.15);
+
+      &::after {
+        display: none;
+      }
     }
   }
 
   &__list {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row;
+    gap: 24px;
     width: 100%;
+    padding: 0 30px 32px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: $bp-lg) {
+      flex-direction: column;
+      gap: 30px;
+      padding: 0;
+      overflow-x: visible;
+    }
   }
 
   &__list-item {
     font-family: $font-family;
-    font-size: 38px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
     white-space: nowrap;
     color: rgba(255, 255, 255, 0.55);
-    text-align: right;
+    text-align: left;
     cursor: pointer;
     transition: color 0.2s;
+
+    @media (min-width: $bp-lg) {
+      font-size: 38px;
+      text-align: right;
+      white-space: normal;
+    }
 
     &:hover {
       color: #F0145A;
@@ -170,7 +231,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 40px 32px;
+    padding: 32px 30px 0;
 
     @media (min-width: $bp-lg) {
       width: 60%;
@@ -215,7 +276,11 @@
   &__inner {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 60px;
+    padding: 30px 30px 60px;
+
+    @media (min-width: $bp-md) {
+      padding: 60px;
+    }
   }
 
   &__label {
@@ -227,6 +292,13 @@
     text-transform: uppercase;
     color: #24A3FF;
     margin: 0 0 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #F0145A;
+    }
   }
 
   &__title {
@@ -245,10 +317,11 @@
   &__list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 30px;
 
     @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
     }
 
     @media (min-width: $bp-lg) {
@@ -258,6 +331,10 @@
 
   &__item {
     padding: 0;
+  }
+
+  &__item-link:hover &__item-title {
+    color: $color-accent;
   }
 
   &__item-icon {
@@ -287,6 +364,7 @@
     letter-spacing: 0;
     color: #24a3ff;
     margin: 0 0 12px;
+    transition: color 0.2s;
   }
 
   &__item-text {
@@ -300,11 +378,45 @@
   }
 }
 
+.services--light {
+  background: $color-white;
+
+  .services__item-text {
+    color: $color-main;
+  }
+
+  .services__item-icon {
+    background-color: #F5F5FA;
+  }
+}
+
+.services--page {
+  .services__inner {
+    padding-top: 132px;
+
+    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+      padding-top: 280px;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding-top: 176px;
+    }
+  }
+
+  .services__title {
+    margin-bottom: 30px;
+  }
+}
+
 // ─── TEAM ────────────────────────────────────────────────────────────────────
 
 .team {
   background-color: $color-white;
-  padding: 60px;
+  padding: 30px;
+
+  @media (min-width: $bp-md) {
+    padding: 60px;
+  }
 
   &__slider {
     overflow: hidden;
@@ -324,21 +436,36 @@
     max-width: 1600px;
     margin: 0 auto;
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
     border-radius: 12px;
     background: #F5F5FA;
     overflow: hidden;
+
+    @media (min-width: $bp-md) {
+      flex-direction: row;
+      align-items: stretch;
+    }
   }
 
   &__photo {
-    flex: 0 0 400px;
-    width: 400px;
-    align-self: stretch;
+    width: 100%;
     display: block;
     object-fit: cover;
     object-position: center top;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
+    border-radius: 0;
+
+    @media (min-width: $bp-md) {
+      flex: 0 0 260px;
+      width: 260px;
+
+      @media (min-width: $bp-lg) {
+        flex: 0 0 400px;
+        width: 400px;
+      }
+      align-self: stretch;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
   }
 
   &__content {
@@ -358,6 +485,13 @@
     text-transform: uppercase;
     color: #24A3FF;
     margin: 0 0 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #F0145A;
+    }
   }
 
   &__quote {
@@ -422,7 +556,7 @@
 // ─── CLIENTS ─────────────────────────────────────────────────────────────────
 
 .clients {
-  padding: 60px 0;
+  padding: 60px 0 0;
 
   &__inner {
     max-width: 1720px;
@@ -459,16 +593,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 12px 24px;
     min-height: 120px;
 
     img {
-      max-height: 60px;
+      max-height: 96px;
       max-width: 100%;
       object-fit: contain;
     }
 
-    &:nth-child(1)  { background-color: #1C3160; }
+    &:nth-child(1)  { background-color: #1C4280; }
     &:nth-child(2)  { background-color: #163545; }
     &:nth-child(3)  { background-color: #F5821F; }
     &:nth-child(4)  { background-color: #8B1FA0; }
@@ -477,7 +611,7 @@
     &:nth-child(7)  { background-color: #B80000; }
     &:nth-child(8)  { background-color: #D8EFF5; }
     &:nth-child(9)  { background-color: #F8F8F8; }
-    &:nth-child(10) { background-color: #1E2D6B; }
+    &:nth-child(10) { background-color: #282240; }
     &:nth-child(11) { background-color: #C0095A; }
     &:nth-child(12) { background-color: #111111; }
   }
@@ -487,7 +621,11 @@
 
 .publications {
   background-color: #F5F5FA;
-  padding: 60px 60px 0;
+  padding: 30px 30px 0;
+
+  @media (min-width: $bp-md) {
+    padding: 60px 60px 0;
+  }
 
   &__inner {
     max-width: 1600px;
@@ -503,6 +641,13 @@
     text-transform: uppercase;
     color: #24A3FF;
     margin: 0 0 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #F0145A;
+    }
   }
 
   &__title {
@@ -528,10 +673,18 @@
 
     @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
+
+      .publications__item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (min-width: $bp-lg) {
       grid-template-columns: repeat(3, 1fr);
+
+      .publications__item:last-child:nth-child(odd) {
+        grid-column: auto;
+      }
     }
   }
 

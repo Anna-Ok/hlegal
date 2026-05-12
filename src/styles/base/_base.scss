@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -13,6 +14,114 @@ body {
 
 a, button {
   cursor: pointer;
+}
+
+// Preloader
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &__logo {
+    width: 120px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: preloader-logo-in 0.6s ease 0.2s forwards;
+  }
+
+  &__bar {
+    width: 160px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    width: 0;
+    background-color: #F0145A;
+    border-radius: 2px;
+    animation: preloader-fill 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+}
+
+@keyframes preloader-logo-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes preloader-fill {
+  to { width: 100%; }
+}
+
+// Scroll reveal
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+
+  &[data-reveal="left"]  { transform: translateX(-44px); }
+  &[data-reveal="right"] { transform: translateX(44px); }
+  &[data-reveal="scale"] { transform: scale(0.9) translateY(14px); }
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Page entry animations (triggered after preloader)
+.header {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.header__inner {
+  transform: translateY(-16px);
+  transition: transform 0.6s ease;
+}
+
+.hero__title {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+}
+
+.hero__scroll {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.6s;
+}
+
+body.is-loaded {
+  .header {
+    opacity: 1;
+  }
+
+  .header__inner {
+    transform: translateY(0);
+  }
+
+  .hero__title {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero__scroll {
+    opacity: 1;
+  }
 }
 
 .cursor {
@@ -56,4 +165,10 @@ button {
 
 address {
   font-style: normal;
+}
+
+.label__arrow {
+  width: 12px;
+  height: 12px;
+  vertical-align: -1px;
 }

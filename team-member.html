@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <title>Team — hlegal Law Company</title>
+  </head>
+  <body>
+
+    <div class="preloader" id="preloader">
+      <img src="./src/assets/logo.svg" alt="hlegal" class="preloader__logo" />
+      <div class="preloader__bar"><div class="preloader__progress"></div></div>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header class="header header--with-label header--light header--muted">
+      <div class="header__mobile-top">
+        <div class="header__lang">
+          <a href="#" class="header__lang-link">УК</a>
+          <a href="#" class="header__lang-link">РУ</a>
+          <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+        </div>
+        <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+      </div>
+      <div class="header__inner">
+        <div class="header__logo-group">
+          <a href="/" class="header__logo">
+            <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
+          </a>
+          <span class="header__mobile-slash">/</span>
+          <a href="/team.html" class="header__mobile-label">team</a>
+        </div>
+        <button class="header__burger" aria-label="Меню">
+          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+        </button>
+        <div class="header__right">
+          <div class="header__top">
+            <div class="header__lang">
+              <a href="#" class="header__lang-link">УК</a>
+              <a href="#" class="header__lang-link">РУ</a>
+              <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+            </div>
+            <span class="header__sep">•</span>
+            <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
+            <span class="header__sep">•</span>
+            <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+            <span class="header__sep">•</span>
+            <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+          </div>
+          <nav class="header__nav">
+            <ul class="header__nav-list">
+              <li class="header__nav-item"><a href="/#about" class="header__nav-link">about us</a></li>
+              <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
+              <li class="header__nav-item"><a href="/team.html" class="header__nav-link header__nav-link--active">team</a></li>
+              <li class="header__nav-item"><a href="/#publications" class="header__nav-link">publications</a></li>
+              <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="header__mobile-menu" id="mobileMenu">
+        <div class="header__mobile-menu-overlay"></div>
+        <div class="header__mobile-menu-panel">
+          <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
+          <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+              <li><a href="/#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/services.html" class="header__mobile-nav-link">services</a></li>
+              <li><a href="/team.html" class="header__mobile-nav-link header__mobile-nav-link--active">team</a></li>
+              <li><a href="/#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="member">
+        <div class="member__inner">
+          <div class="member__photo-col" data-reveal>
+            <img src="" alt="" class="member__photo" id="memberPhoto" />
+          </div>
+          <div class="member__content" data-reveal data-delay="120">
+            <h1 class="member__name" id="memberName"></h1>
+            <div class="member__meta">
+              <span class="member__role" id="memberRole"></span>
+              <span class="member__sep">•</span>
+              <a href="#" class="member__email" id="memberEmail"></a>
+              <span class="member__sep">•</span>
+              <a href="#" class="member__linkedin" id="memberLinkedin">LinkedIn profile</a>
+            </div>
+            <hr class="member__divider" />
+            <div class="member__bio" id="memberBio"></div>
+            <p class="member__section-title">EDUCATION</p>
+            <p class="member__section-text" id="memberEducation"></p>
+            <p class="member__section-title">EXPERIENCE</p>
+            <p class="member__section-text" id="memberExperience"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner" data-reveal>
+        <div class="footer__left">
+          <div class="footer__address-row">
+            <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
+            <span class="footer__sep">•</span>
+            <a href="#map" class="footer__map">ON MAP</a>
+          </div>
+          <div class="footer__contact-row">
+            <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+            <span class="footer__sep">•</span>
+            <a href="tel:+380800211927" class="footer__phone">0800 211 927</a>
+            <span class="footer__sep">•</span>
+            <a href="mailto:contact@forstudy.space" class="footer__email">contact@forstudy.space</a>
+          </div>
+        </div>
+        <p class="footer__copyright">© 2021 HLEGAL Law company, LLC</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/team-member.js"></script>
+  </body>
+</html>
