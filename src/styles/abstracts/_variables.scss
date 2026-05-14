@@ -1,0 +1,41 @@
+// ─── COLORS: MAIN ────────────────────────────────────────────────────────────
+$color-main:      #383966;
+$color-main-alt:  #4F506E;
+$color-main-soft: #7E7F97;
+
+// ─── COLORS: ACCENT ──────────────────────────────────────────────────────────
+$color-accent: #FF1654;
+
+// ─── COLORS: ACTIVE ──────────────────────────────────────────────────────────
+$color-active:        #24CBFF;
+$color-active-hover:  #0FA8F0;
+$color-active-pressed:#0A8FD8;
+
+// ─── COLORS: GREY ────────────────────────────────────────────────────────────
+$color-grey-bg:        #F8F8F9;
+$color-grey-bg-alt:    #EEEEEF;
+$color-grey-text:      #9E9EA8;
+$color-grey-separator: #F0F0F3;
+
+// ─── COLORS: BASE ────────────────────────────────────────────────────────────
+$color-white: #ffffff;
+$color-text:  $color-main;
+
+// ─── GRADIENTS ───────────────────────────────────────────────────────────────
+$gradient-soft:     linear-gradient(135deg, $color-main, $color-main-alt);
+$gradient-red:      linear-gradient(135deg, $color-main, $color-accent);
+$gradient-supersoft: linear-gradient(228.57deg, #323264 11.93%, #323264 57.17%, #643e72 87.46%);
+$gradient-red-text: linear-gradient(135deg, #ff8a8a, $color-accent);
+
+// ─── TYPOGRAPHY ──────────────────────────────────────────────────────────────
+$font-family: 'Montserrat', sans-serif;
+
+// ─── BREAKPOINTS ─────────────────────────────────────────────────────────────
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1440px;
+
+// ─── LAYOUT ──────────────────────────────────────────────────────────────────
+$container-max:     1200px;
+$container-padding: 20px;

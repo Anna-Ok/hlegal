@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <title>IT and e-commerce — hlegal Law Company</title>
+  </head>
+  <body>
+
+    <div class="preloader" id="preloader">
+      <img src="./src/assets/logo.svg" alt="hlegal" class="preloader__logo" />
+      <div class="preloader__bar"><div class="preloader__progress"></div></div>
+    </div>
+
+    <div class="cursor"></div>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__overlay"></div>
+      <div class="modal__card">
+        <button class="modal__close" aria-label="Close">&#10005;</button>
+        <h2 class="modal__title" id="modalTitle">We would like to help you</h2>
+        <form class="modal__form" novalidate>
+          <div class="modal__field">
+            <input type="text" class="modal__input" placeholder="Name" />
+            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+          </div>
+          <textarea class="modal__textarea" placeholder="Message"></textarea>
+          <p class="modal__group-label">HOW TO ANSWER YOU?</p>
+          <div class="modal__field">
+            <input type="tel" class="modal__input" placeholder="Phone number" />
+            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+          </div>
+          <div class="modal__field">
+            <input type="email" class="modal__input" placeholder="Email" />
+            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+          </div>
+          <button type="submit" class="modal__submit">Send message</button>
+        </form>
+      </div>
+    </div>
+
+    <header class="header header--with-label">
+      <div class="header__mobile-top">
+        <div class="header__lang">
+          <a href="#" class="header__lang-link">УК</a>
+          <a href="#" class="header__lang-link">РУ</a>
+          <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+        </div>
+        <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+      </div>
+      <div class="header__inner">
+        <div class="header__logo-group">
+          <a href="/" class="header__logo">
+            <img src="./src/assets/logo.svg" alt="hlegal law company" class="header__logo-img" />
+          </a>
+          <span class="header__mobile-slash">/</span>
+          <a href="/services.html" class="header__mobile-label">services</a>
+        </div>
+        <button class="header__burger" aria-label="Меню">
+          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+        </button>
+        <div class="header__right">
+          <div class="header__top">
+            <div class="header__lang">
+              <a href="#" class="header__lang-link">УК</a>
+              <a href="#" class="header__lang-link">РУ</a>
+              <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+            </div>
+            <span class="header__sep">•</span>
+            <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
+            <span class="header__sep">•</span>
+            <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+            <span class="header__sep">•</span>
+            <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+          </div>
+          <nav class="header__nav">
+            <ul class="header__nav-list">
+              <li class="header__nav-item"><a href="/#about" class="header__nav-link">about us</a></li>
+              <li class="header__nav-item"><a href="/services.html" class="header__nav-link header__nav-link--active">services</a></li>
+              <li class="header__nav-item"><a href="/#team" class="header__nav-link">team</a></li>
+              <li class="header__nav-item"><a href="/#publications" class="header__nav-link">publications</a></li>
+              <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="header__mobile-menu" id="mobileMenu">
+        <div class="header__mobile-menu-overlay"></div>
+        <div class="header__mobile-menu-panel">
+          <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
+          <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+              <li><a href="/#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/services.html" class="header__mobile-nav-link header__mobile-nav-link--active">services</a></li>
+              <li><a href="/#team" class="header__mobile-nav-link">team</a></li>
+              <li><a href="/#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="dark-bg">
+        <div class="service__hero">
+          <div class="service__icon" data-reveal="scale">
+            <span class="icon-Ecommerce"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+          </div>
+          <h1 class="service__title" data-reveal data-delay="100">IT and e-commerce</h1>
+          <p class="service__desc" data-reveal data-delay="180">An endless stream of contracts, tax issues, labor relations, corporate papers — legal work distracts you from doing business. But there is not much work to do to hire an in-house lawyer.</p>
+          <p class="service__desc" data-reveal data-delay="240">In addition, over time, the work will become the same type and uninteresting for a full-time lawyer. And we know very well how difficult it is to find a good candidate with experience in the field of information technology in Ukraine.</p>
+          <button class="service__cta" id="openModal" data-reveal data-delay="300">Free consultation</button>
+          <hr class="service__divider" data-reveal data-delay="360" />
+          <div class="service__list-section" data-reveal data-delay="420">
+            <p class="service__list-label">Services in this area:</p>
+            <ul class="service__list">
+              <li class="service__list-item">support of investment projects for the development of port infrastructure;</li>
+              <li class="service__list-item">support of procedures related to the lease of state property in the port;</li>
+              <li class="service__list-item">certification of GTS, entering information about them in mandatory databases and registers;</li>
+              <li class="service__list-item">support of procedures related to confirmation of the status of port operator, maritime agent, foreign sailing line;</li>
+              <li class="service__list-item">registration of permits for the construction of port terminals;</li>
+              <li class="service__list-item">support of procedures related to the inclusion of the company within the port;</li>
+              <li class="service__list-item">registration of permit and other mandatory documentation required for carrying out activities in the port (emission permit, conclusion on EIA, RTC, etc.);</li>
+              <li class="service__list-item">appeals against actions related to the illegal imposition of services in the port by monopoly companies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <section class="publications" id="publications">
+        <div class="publications__inner">
+          <p class="publications__label" data-reveal>PUBLICATIONS <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
+          <h2 class="publications__title" data-reveal data-delay="120">Recommended</h2>
+          <ul class="publications__list">
+            <li class="publications__item">
+              <article class="publications__card">
+                <div class="publications__card-image" style="background-image: url('./src/assets/cover_1.webp'); background-size: cover; background-position: center;"></div>
+                <div class="publications__card-body">
+                  <p class="publications__card-title">Equity associate</p>
+                  <time class="publications__card-date" datetime="2019-04-21">April 22</time>
+                  <p class="publications__card-text">I'm a jun on projects: I am a co-owner of a law firm. How it happened. Before entering my parents told me that if I...</p>
+                </div>
+              </article>
+            </li>
+            <li class="publications__item">
+              <article class="publications__card">
+                <div class="publications__card-image" style="background-image: url('./src/assets/cover_2.webp'); background-size: cover; background-position: center;"></div>
+                <div class="publications__card-body">
+                  <p class="publications__card-title">Penalty for the Good Corporation: what will happen to Google and others for violating the GDPR</p>
+                  <time class="publications__card-date" datetime="2019-09-29">September 29</time>
+                  <p class="publications__card-text">And why the recovery of 50 million euros could be a fateful precedent According to Mind.ua January 21 National Commission for Data Protection...</p>
+                </div>
+              </article>
+            </li>
+            <li class="publications__item">
+              <article class="publications__card">
+                <div class="publications__card-image" style="background-image: url('./src/assets/cover_3.webp'); background-size: cover; background-position: center;"></div>
+                <div class="publications__card-body">
+                  <p class="publications__card-title">Millennial Testament</p>
+                  <time class="publications__card-date" datetime="2019-08-19">August 19</time>
+                  <p class="publications__card-text">What and how modern vloggers, bloggers and crypto-millionaires will inherit. A typical legacy of the Ukrainian generation X looks like this: an apartment in...</p>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer__inner" data-reveal>
+        <div class="footer__left">
+          <div class="footer__address-row">
+            <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
+            <span class="footer__sep">•</span>
+            <a href="#map" class="footer__map">ON MAP</a>
+          </div>
+          <div class="footer__contact-row">
+            <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+            <span class="footer__sep">•</span>
+            <a href="tel:+380800211927" class="footer__phone">0800 211 927</a>
+            <span class="footer__sep">•</span>
+            <a href="mailto:contact@forstudy.space" class="footer__email">contact@forstudy.space</a>
+          </div>
+        </div>
+        <p class="footer__copyright">© 2021 HLEGAL Law company, LLC</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/service.js"></script>
+  </body>
+</html>

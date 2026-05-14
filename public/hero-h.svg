@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 590" fill="none">
+  <defs>
+    <linearGradient id="archGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B2D7E"/>
+      <stop offset="100%" stop-color="#FF1654"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Arch (gradient) — drawn first so diagonal renders on top -->
+  <path
+    fill="url(#archGrad)"
+    d="M 275 295
+       L 420 295
+       Q 530 295 530 415
+       L 530 590
+       L 400 590
+       L 400 430
+       Q 345 415 275 430
+       Z"
+  />
+
+  <!-- Diagonal stroke (solid accent) -->
+  <polygon
+    fill="#FF1654"
+    points="265,0 390,0 275,590 150,590"
+  />
+</svg>

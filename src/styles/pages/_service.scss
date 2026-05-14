@@ -1,0 +1,147 @@
+@use '../abstracts/variables' as *;
+
+.service {
+  &__hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 176px 30px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  &__icon {
+    width: 92px;
+    height: 92px;
+    background: $color-white;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    span {
+      font-size: 56px;
+      background: linear-gradient(180deg, #ef8080 0%, #f0145a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+  }
+
+  &__desc {
+    color: $color-white;
+    font-family: $font-family;
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 208px;
+    height: 56px;
+    padding: 18px 30px;
+    gap: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #24A3FF;
+    box-shadow: 0px 0px 20px 0px rgba(#24A3FF, 0.5);
+    color: $color-white;
+    font-family: $font-family;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+
+    &:hover {
+      background: $color-active-hover;
+      box-shadow: 0px 0px 28px 0px rgba(#24A3FF, 0.65);
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    border: none;
+    height: 4px;
+    background-color: rgba($color-white, 0.2);
+    margin: 60px 0 0;
+  }
+
+  &__list-section {
+    width: 100%;
+    text-align: left;
+    margin-top: 34px;
+  }
+
+  &__list-label {
+    color: $color-white;
+    font-family: $font-family;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    @media (min-width: $bp-md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 60px;
+    }
+  }
+
+  &__list-item {
+    color: rgba($color-white, 0.88);
+    font-family: $font-family;
+    font-size: 14px;
+    line-height: 1.55;
+    padding-left: 18px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: $color-accent;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Make services__item on home page clickable
+.services__item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.88;
+  }
+}
