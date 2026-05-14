@@ -1,0 +1,413 @@
+@use 'variables' as *;
+
+// ─── LAYOUT SHELL (max-width + center + horizontal padding) ───────────────────
+
+@mixin layout-shell {
+  width: 100%;
+  max-width: $layout-shell-max;
+  margin-inline: auto;
+  padding-inline: $layout-pad-inline-sm;
+
+  @media (min-width: $bp-md) {
+    padding-inline: $layout-pad-inline-md;
+  }
+}
+
+@mixin layout-reading-shell {
+  width: 100%;
+  max-width: calc(#{$layout-reading-max} + 2 * #{$layout-pad-inline-xl});
+  margin-inline: auto;
+  padding-inline: $layout-pad-inline-sm;
+  box-sizing: border-box;
+
+  @media (min-width: $bp-md) {
+    padding-inline: $layout-pad-inline-md;
+  }
+
+  @media (min-width: #{$bp-lg + 1px}) {
+    padding-inline: $layout-pad-inline-xl;
+  }
+}
+
+// ─── RED GRADIENT TEXT ────────────────────────────────────────────────────────
+// Used for headings, quotes, stat numbers, highlights.
+// Gradient direction: 90.13deg, #F0145A → #EF8080
+
+@mixin gradient-text {
+  background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ─── SECTION LABEL ───────────────────────────────────────────────────────────
+// Blue uppercase tag: "SERVICES ›", "PUBLICATIONS ›", "КОМАНДА ›"
+// Works on both <a> and <p> elements.
+
+@mixin section-label {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #24A3FF;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #F0145A;
+  }
+}
+
+@mixin section-heading-stack {
+  display: flex;
+  flex-direction: column;
+  gap: $space-section-label;
+  margin: 0;
+}
+
+// ─── SECTION EYEBROW ─────────────────────────────────────────────────────────
+// Small centered uppercase heading: "THEY ALREADY TRUST US", "ACHIEVEMENTS"
+
+@mixin section-eyebrow {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #323264;
+  margin: 0;
+}
+
+// ─── SECTION TITLE ───────────────────────────────────────────────────────────
+// Large gradient section heading: "What can we do better...", "We have something to tell"
+// Margin is set per-context since it varies.
+
+@mixin section-title-gradient {
+  font-family: $font-family;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.211;
+  letter-spacing: 0;
+  @include gradient-text;
+}
+
+@mixin publications-card {
+  &__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $color-white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__card-image {
+    width: 100%;
+    max-height: 200px;
+    aspect-ratio: 16 / 9;
+    background-color: $color-grey-bg-alt;
+    margin-bottom: 0;
+  }
+
+  &__card-body {
+    display: flex;
+    flex-direction: column;
+    padding: $space-text-group;
+    gap: $space-text-tight;
+  }
+
+  &__card-title {
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #24A3FF;
+    margin: 0;
+  }
+
+  &__card-date {
+    display: block;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #B3B3BA;
+    padding-bottom: $space-text-tight;
+    border-bottom: $divider-thickness solid #E6E6F0;
+  }
+
+  &__card-text {
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.571;
+    letter-spacing: 0;
+    color: $color-main-alt;
+    margin: 0;
+  }
+}
+
+// ─── BODY TEXT LARGE ─────────────────────────────────────────────────────────
+// 19px flowing text used in about sections.
+
+@mixin body-text-lg {
+  font-family: $font-family;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: $color-main-alt;
+  margin: 0;
+}
+
+// ─── SLIDER DOT BASE ─────────────────────────────────────────────────────────
+// Shared dot indicator for sliders. Sizes are set per-context.
+// Includes --active modifier and :hover state via & so BEM nesting works.
+
+@mixin slider-dot-base {
+  border-radius: 50%;
+  background-color: rgba(#24A3FF, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &--active {
+    background-color: #24A3FF;
+  }
+
+  &:hover:not(&--active) {
+    background-color: rgba(#24A3FF, 0.5);
+  }
+}
+
+@mixin form-panel-title {
+  font-family: $font-family;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  @include gradient-text;
+  margin: 0;
+}
+
+@mixin form-panel($block, $input-bg: $color-white) {
+  .#{$block}__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  .#{$block}__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+  }
+
+  @include form-field-controls($block);
+
+  .#{$block}__input,
+  .#{$block}__textarea {
+    @include form-input-base($input-bg);
+  }
+
+  .#{$block}__textarea {
+    @include form-textarea-extra;
+  }
+
+  .#{$block}__group-label {
+    @include form-group-label;
+  }
+
+  .#{$block}__submit {
+    width: 100%;
+  }
+}
+
+// ─── FORM SHARED STYLES ───────────────────────────────────────────────────────
+// Used in both .modal and .contact-page to avoid duplicating form internals.
+
+@mixin form-input-base($bg: #F5F5FA) {
+  background: $bg;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: $space-text-tight;
+  height: 56px;
+  font-family: $font-family;
+  font-size: 16px;
+  color: $color-main;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  &::placeholder {
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #B3B3BA;
+    transition: color 0.2s;
+  }
+
+  &:focus {
+    border-color: #24A3FF;
+  }
+
+  &:disabled {
+    background: $color-grey-bg-alt;
+    border-color: transparent;
+    color: $color-grey-text;
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: $color-grey-text;
+    }
+  }
+}
+
+@mixin form-textarea-extra {
+  height: auto;
+  min-height: 130px;
+  resize: vertical;
+}
+
+@mixin form-clear-btn {
+  position: absolute;
+  right: $space-text-tight;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #B3B3BA;
+  font-size: 13px;
+  line-height: 1;
+  padding: 4px;
+  opacity: 0;
+  pointer-events: none;
+  background: none;
+  border: none;
+  transition: opacity 0.15s, color 0.15s;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+@mixin form-field-controls($block) {
+  .#{$block}__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--invalid .#{$block}__input,
+    &--invalid .#{$block}__textarea {
+      border-color: #FF0000;
+      color: #FF0000;
+
+      &::placeholder {
+        color: #FF0000;
+      }
+    }
+
+    &--invalid .#{$block}__error {
+      display: flex;
+    }
+
+    &--filled .#{$block}__input-wrap:hover .#{$block}__clear {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  .#{$block}__input-wrap {
+    position: relative;
+
+    &--textarea .#{$block}__clear {
+      top: $space-text-tight;
+      transform: none;
+    }
+  }
+
+  .#{$block}__error {
+    @include form-error;
+  }
+
+  .#{$block}__error-icon {
+    @include form-error-icon;
+  }
+
+  .#{$block}__clear {
+    @include form-clear-btn;
+  }
+
+  .#{$block}__input-wrap .#{$block}__input,
+  .#{$block}__input-wrap .#{$block}__textarea {
+    padding-right: 40px;
+  }
+}
+
+@mixin form-error {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  color: #FF0000;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+}
+
+@mixin form-error-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FF0000;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@mixin form-group-label {
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #B3B3BA;
+  margin: 0;
+}
+
+// ─── HORIZONTAL RULE (4px, grey) ─────────────────────────────────────────────
+// Same visual as .contact-page__divider — reuse for page separators.
+
+@mixin hr-divider-grey {
+  border: none;
+  height: $divider-thickness;
+  width: 100%;
+  margin: 0;
+  background-color: #E6E6F0;
+}
+
+@mixin hr-divider-vertical($color: #E6E6F0) {
+  border: none;
+  width: $divider-thickness;
+  height: auto;
+  margin: 0;
+  background-color: $color;
+}

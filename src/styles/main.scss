@@ -7,6 +7,7 @@
 @use 'base/typography';
 
 // Layout
+@use 'layout/container';
 @use 'layout/header';
 @use 'layout/footer';
 
@@ -21,6 +22,8 @@
 @use 'pages/service';
 @use 'pages/contact';
 @use 'pages/team';
+@use 'pages/publications';
+@use 'pages/publication';
 
 // Themes
 @use 'themes/theme';

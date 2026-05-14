@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 // ── Member detail page ────────────────────────────────────────────────────────
 
@@ -9,10 +10,10 @@ body:has(.member) {
 }
 
 .member {
-  padding: 176px 60px 100px;
+  padding: 176px $layout-pad-inline-md 100px;
 
   @media (max-width: #{$bp-md - 1px}) {
-    padding: 132px 24px 60px;
+    padding: 132px $layout-pad-inline-sm 60px;
   }
 
   @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
@@ -20,7 +21,7 @@ body:has(.member) {
   }
 
   &__inner {
-    max-width: 1200px;
+    max-width: $container-max;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 5fr 7fr;
@@ -51,16 +52,32 @@ body:has(.member) {
     }
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+    margin: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
   &__name {
     font-family: $font-family;
     font-size: 38px;
     font-weight: 700;
     line-height: 1.1;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 0 0 16px;
+    @include gradient-text;
+    margin: 0;
 
     @media (max-width: #{$bp-md - 1px}) {
       font-size: 28px;
@@ -72,7 +89,7 @@ body:has(.member) {
     align-items: center;
     flex-wrap: wrap;
     gap: 8px 10px;
-    margin-bottom: 20px;
+    margin: 0;
   }
 
   &__role {
@@ -102,10 +119,13 @@ body:has(.member) {
   }
 
   &__divider {
-    border: none;
-    height: 1px;
-    background: $color-grey-separator;
-    margin: 0 0 24px;
+    @include hr-divider-grey;
+  }
+
+  &__bio {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
   }
 
   &__bio-para {
@@ -114,11 +134,14 @@ body:has(.member) {
     font-weight: 400;
     line-height: 1.7;
     color: $color-main;
-    margin: 0 0 16px;
+    margin: 0;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+    margin: 0;
   }
 
   &__section-title {
@@ -127,7 +150,7 @@ body:has(.member) {
     font-weight: 700;
     letter-spacing: 0.06em;
     color: $color-main;
-    margin: 28px 0 8px;
+    margin: 0;
   }
 
   &__section-text {
@@ -149,20 +172,26 @@ body:has(.team-page) {
 }
 
 .team-page {
-  padding: 176px 60px 80px;
+  padding: 176px $layout-pad-inline-md 80px;
 
   @media (max-width: #{$bp-md - 1px}) {
-    padding: 132px 30px 60px;
+    padding: 132px $layout-pad-inline-sm 60px;
   }
 
   @media (min-width: $bp-md) and (max-width: $bp-lg) {
-    padding: 280px 60px 80px;
+    padding: 280px $layout-pad-inline-md 80px;
   }
 
-
   &__inner {
-    max-width: 1600px;
+    max-width: $layout-content-max;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    @media (max-width: #{$bp-md - 1px}) {
+      gap: 40px;
+    }
   }
 
   &__quote {
@@ -171,22 +200,13 @@ body:has(.team-page) {
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 0 0 60px;
-    padding: 0 120px;
-    max-width: 1360px;
-
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      padding: 0;
-    }
+    @include gradient-text;
+    margin: 0 auto;
+    max-width: 1120px;
+    padding: 0;
 
     @media (max-width: #{$bp-md - 1px}) {
       font-size: 30px;
-      margin-bottom: 40px;
-      padding: 0;
     }
   }
 
@@ -195,9 +215,8 @@ body:has(.team-page) {
     grid-template-columns: 1fr;
     gap: 60px;
 
-    @media (min-width: $bp-sm) and (max-width: #{$bp-lg - 1px}) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
     }
 
     @media (min-width: $bp-lg) {
@@ -206,41 +225,59 @@ body:has(.team-page) {
   }
 
   &__card {
-    height: 462px;
     display: flex;
     flex-direction: column;
+    height: 462px;
+    transition: transform 0.35s ease;
+
+    &:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
   }
 
   &__link {
     display: flex;
     flex-direction: column;
+    gap: $space-text-tight;
     height: 100%;
+    min-height: 0;
     text-decoration: none;
     cursor: pointer;
   }
 
-  &__photo {
+  &__photo-wrap {
     flex: 1;
     min-height: 0;
-    width: 100%;
-    object-fit: cover;
-    object-position: center top;
     border-radius: 12px;
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
     display: block;
-    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+
+    .team-page__link:hover & {
+      transform: scale(1.05);
+    }
   }
 
   &__info {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  &__info-top {
-    display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  &__info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
   }
 
   &__name {
@@ -250,6 +287,7 @@ body:has(.team-page) {
     line-height: 1;
     letter-spacing: 0;
     color: #323264;
+    margin: 0;
   }
 
   &__role {
@@ -259,6 +297,7 @@ body:has(.team-page) {
     line-height: 22px;
     letter-spacing: 0;
     color: #B3B3BA;
+    margin: 0;
   }
 
   &__arrow {
@@ -266,7 +305,7 @@ body:has(.team-page) {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: none;
+    border: 1px solid $color-grey-separator;
     background: #F5F5FA;
     color: #24A3FF;
     font-size: 26px;
@@ -275,11 +314,11 @@ body:has(.team-page) {
     align-items: center;
     justify-content: center;
     padding: 0 0 2px 2px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 
-    &:hover {
+    .team-page__link:hover & {
       background: #24A3FF;
+      border-color: #24A3FF;
       color: $color-white;
     }
   }

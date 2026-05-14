@@ -39,3 +39,19 @@ $bp-xl: 1440px;
 // ─── LAYOUT ──────────────────────────────────────────────────────────────────
 $container-max:     1200px;
 $container-padding: 20px;
+
+// Page shell: centered block with horizontal padding (replaces calc(1600px + 120px) hacks).
+$layout-shell-max:    1720px; // 1600px content + 60px padding-inline each side
+$layout-content-max:  1600px;
+$layout-reading-max:  1360px;
+$layout-hero-inner-max: 1440px;
+$layout-clients-max:  1720px;
+$layout-pad-inline-sm: 30px;
+$layout-pad-inline-md: 60px;
+$layout-pad-inline-xl: 180px; // wide gutters (article/contact) — use with max-width, not page padding hacks
+
+// ─── TEXT SPACING ─────────────────────────────────────────────────────────────
+$space-section-label: 10px; // section label → section title
+$space-text-tight: 15px; // heading/subtitle → text, list items
+$space-text-group: 30px; // separate text blocks / content groups
+$divider-thickness: 4px;

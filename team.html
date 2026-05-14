@@ -28,17 +28,19 @@
         <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
       </div>
       <div class="header__inner">
-        <div class="header__logo-group">
-          <a href="/" class="header__logo">
-            <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
-          </a>
-          <span class="header__mobile-slash">/</span>
-          <span class="header__mobile-label">team</span>
+        <div class="header__brand">
+          <div class="header__logo-group">
+            <a href="/" class="header__logo">
+              <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
+            </a>
+            <span class="header__mobile-slash">/</span>
+            <span class="header__mobile-label">team</span>
+          </div>
+          <button class="header__burger" aria-label="Меню">
+            <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+          </button>
         </div>
-        <button class="header__burger" aria-label="Меню">
-          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
-        </button>
-        <div class="header__right">
+        <div class="header__content">
           <div class="header__top">
             <div class="header__lang">
               <a href="#" class="header__lang-link">УК</a>
@@ -54,10 +56,10 @@
           </div>
           <nav class="header__nav">
             <ul class="header__nav-list">
-              <li class="header__nav-item"><a href="/#about" class="header__nav-link">about us</a></li>
+              <li class="header__nav-item"><a href="/about.html" class="header__nav-link">about us</a></li>
               <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
               <li class="header__nav-item"><a href="/team.html" class="header__nav-link header__nav-link--active">team</a></li>
-              <li class="header__nav-item"><a href="/#publications" class="header__nav-link">publications</a></li>
+              <li class="header__nav-item"><a href="/publications.html" class="header__nav-link">publications</a></li>
               <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
             </ul>
           </nav>
@@ -69,10 +71,10 @@
           <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
           <nav class="header__mobile-nav">
             <ul class="header__mobile-nav-list">
-              <li><a href="/#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/about.html" class="header__mobile-nav-link">about us</a></li>
               <li><a href="/services.html" class="header__mobile-nav-link">services</a></li>
               <li><a href="/team.html" class="header__mobile-nav-link header__mobile-nav-link--active">team</a></li>
-              <li><a href="/#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/publications.html" class="header__mobile-nav-link">publications</a></li>
               <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
             </ul>
           </nav>
@@ -87,75 +89,87 @@
           <blockquote class="team-page__quote" data-reveal>We are used to taking responsibility and always guarantee honest, timely assistance, even in situations where most are powerless.</blockquote>
 
           <ul class="team-page__grid">
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=alex" class="team-page__link">
-                <img src="./src/assets/alex.webp" alt="Alexander Alexandrovsky" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/alex.webp" alt="Alexander Alexandrovsky" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Alexander Alexandrovsky</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Managing partner</p>
                   </div>
-                  <p class="team-page__role">Managing partner</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=evgeny" class="team-page__link">
-                <img src="./src/assets/evgeny.webp" alt="Evgeny Patrikov" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/evgeny.webp" alt="Evgeny Patrikov" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Evgeny Patrikov</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Equity partner, Attorney-at-law</p>
                   </div>
-                  <p class="team-page__role">Equity partner, Attorney-at-law</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=vlad" class="team-page__link">
-                <img src="./src/assets/vlad.webp" alt="Vladislav Melnik" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/vlad.webp" alt="Vladislav Melnik" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Vladislav Melnik</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Associate</p>
                   </div>
-                  <p class="team-page__role">Associate</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=sergey" class="team-page__link">
-                <img src="./src/assets/sergey.webp" alt="Sergey Binn" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/sergey.webp" alt="Sergey Binn" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Sergey Binn</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Associate</p>
                   </div>
-                  <p class="team-page__role">Associate</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=oksana" class="team-page__link">
-                <img src="./src/assets/oksana.webp" alt="Oksana Kobzar" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/oksana.webp" alt="Oksana Kobzar" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Oksana Kobzar</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Equity partner, Attorney-at-law</p>
                   </div>
-                  <p class="team-page__role">Equity partner, Attorney-at-law</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
-            <li class="team-page__card">
+                        <li class="team-page__card">
               <a href="/team-member.html?id=julia" class="team-page__link">
-                <img src="./src/assets/julia.webp" alt="Julia Wolk" class="team-page__photo" />
+                <div class="team-page__photo-wrap">
+                  <img src="./src/assets/julia.webp" alt="Julia Wolk" class="team-page__photo" />
+                </div>
                 <div class="team-page__info">
-                  <div class="team-page__info-top">
+                  <div class="team-page__info-text">
                     <p class="team-page__name">Julia Wolk</p>
-                    <span class="team-page__arrow">&#8250;</span>
+                    <p class="team-page__role">Associate, Attorney-at-law</p>
                   </div>
-                  <p class="team-page__role">Associate, Attorney-at-law</p>
+                  <span class="team-page__arrow" aria-hidden="true">&#8250;</span>
                 </div>
               </a>
             </li>
@@ -171,7 +185,7 @@
           <div class="footer__address-row">
             <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
             <span class="footer__sep">•</span>
-            <a href="#map" class="footer__map">ON MAP</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=50.43686007158957%2C30.529531777143486" class="footer__map" target="_blank" rel="noopener noreferrer">ON MAP</a>
           </div>
           <div class="footer__contact-row">
             <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>

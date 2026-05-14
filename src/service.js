@@ -1,4 +1,6 @@
+import './utils/scrollToTop.js'
 import './styles/main.scss'
+import { initForm } from './utils/initForm.js'
 
 // Preloader
 const preloader = document.getElementById('preloader');
@@ -65,37 +67,35 @@ document.querySelectorAll('.header__lang-link').forEach(link => {
 
 // Modal
 const modal = document.getElementById('modal');
+const modalForm = modal?.querySelector('.modal__form');
+const modalSubmit = modal?.querySelector('.modal__submit');
+
+let modalFormController = { reset() {} };
 
 const openModal = () => {
   modal.classList.add('modal--open');
   document.body.style.overflow = 'hidden';
 };
+
 const closeModal = () => {
   modal.classList.remove('modal--open');
   document.body.style.overflow = '';
+  modalFormController.reset();
 };
+
+modalFormController = initForm({
+  form: modalForm,
+  block: 'modal',
+  submit: modalSubmit,
+  onSuccess: () => {
+    window.setTimeout(closeModal, 1200);
+  },
+});
 
 document.getElementById('openModal')?.addEventListener('click', openModal);
 modal?.querySelector('.modal__close')?.addEventListener('click', closeModal);
 modal?.querySelector('.modal__overlay')?.addEventListener('click', closeModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-modal?.querySelector('.modal__form')?.addEventListener('submit', e => { e.preventDefault(); closeModal(); });
-
-// Input clear buttons
-document.querySelectorAll('.modal__field').forEach(field => {
-  const input = field.querySelector('.modal__input');
-  const clear = field.querySelector('.modal__clear');
-
-  input.addEventListener('input', () => {
-    field.classList.toggle('modal__field--filled', input.value.length > 0);
-  });
-
-  clear.addEventListener('click', () => {
-    input.value = '';
-    field.classList.remove('modal__field--filled');
-    input.focus();
-  });
-});
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {

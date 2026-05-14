@@ -1,14 +1,29 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .footer {
   background-color: #F5F5FA;
-  padding: 30px;
+  padding: 0 $layout-pad-inline-sm 30px;
 
   @media (min-width: $bp-md) {
-    padding: 30px 60px;
+    padding: 0 $layout-pad-inline-md 30px;
+  }
+
+  &__divider {
+    @include hr-divider-grey;
+    display: block;
+    max-width: $layout-shell-max;
+    margin-inline: auto;
+  }
+
+  &--no-divider &__divider {
+    display: none;
   }
 
   &__inner {
+    max-width: $layout-shell-max;
+    margin: 0 auto;
+    padding-top: $space-text-group;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,10 +108,9 @@
     justify-content: center;
     flex-shrink: 0;
     border-radius: 50%;
-    transition: background-color 0.2s;
 
-    &:hover {
-      background-color: #F0145A;
+    &:hover span {
+      color: #F0145A;
     }
 
     span {
@@ -111,10 +125,6 @@
         width: 38px;
         height: 38px;
       }
-    }
-
-    &:hover span {
-      color: $color-white;
     }
   }
 

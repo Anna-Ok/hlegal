@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Centered page shell — use on sections or inner wrappers that need shared max-width + padding.
+.layout-shell {
+  @include layout-shell;
+}
+
+// Reading-width shell (e.g. long-form article body) with wide gutters on large viewports.
+.layout-shell--reading {
+  @include layout-reading-shell;
+}

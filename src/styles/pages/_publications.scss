@@ -1,0 +1,88 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+body:has(.pub-page) {
+  .header__mobile-label {
+    color: #323264;
+  }
+}
+
+.pub-page {
+  background-color: $color-white;
+  padding-top: 170px;
+
+  @media (min-width: $bp-md) {
+    padding-top: 200px;
+  }
+
+  &__body {
+    background-color: #F5F5FA;
+    padding: 40px $layout-pad-inline-sm 60px;
+
+    @media (min-width: $bp-md) {
+      padding: 40px $layout-pad-inline-md 80px;
+    }
+  }
+
+  &__inner {
+    max-width: $layout-content-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__tabs {
+    display: flex;
+    margin-inline: auto;
+    background: #EEEEF8;
+    border-radius: 16px;
+    padding: 5px;
+    width: fit-content;
+  }
+
+  &__tab {
+    font-family: $font-family;
+    font-size: 15px;
+    font-weight: 700;
+    color: #323264;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 48px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+
+    &--active {
+      background: $color-white;
+      box-shadow: 0 2px 10px rgba(#323264, 0.08);
+    }
+
+    &:hover:not(&--active) {
+      background: #F5F5FA;
+    }
+  }
+
+  &__more {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // Remove bottom border on publications list when used inside pub-page
+  .publications__list {
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Card body variant without top image
+.publications__card-body--no-image {
+  flex: 1;
+}
