@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 // ─── DARK WRAPPER (hero + about + services) ──────────────────────────────────
 
@@ -66,7 +67,7 @@
   }
 
   &__inner {
-    max-width: 1440px;
+    max-width: $layout-hero-inner-max;
     margin: 0 auto;
     width: 100%;
     height: 100%;
@@ -133,20 +134,23 @@
 // ─── ABOUT ───────────────────────────────────────────────────────────────────
 
 .about {
-  padding: 60px 0;
+  padding: 60px $layout-pad-inline-sm 0;
 
   @media (min-width: $bp-lg) {
-    padding: 60px;
+    padding: 60px $layout-pad-inline-md 0;
   }
 
   &__inner {
-    max-width: 1600px;
+    max-width: $layout-reading-max;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    gap: 32px;
 
     @media (min-width: $bp-lg) {
       flex-direction: row;
+      align-items: center;
+      gap: 60px;
       min-height: 300px;
     }
   }
@@ -155,23 +159,21 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0;
+    gap: 32px;
 
     &::after {
       content: '';
       display: block;
-      height: 4px;
+      height: $divider-thickness;
       background: rgba(255, 255, 255, 0.2);
-      margin: 0 30px;
     }
 
     @media (min-width: $bp-lg) {
       flex-direction: column;
       align-items: flex-end;
       justify-content: center;
+      gap: 0;
       width: 40%;
-      padding: 48px 60px 48px 0;
-      border-right: 4px solid rgba(255, 255, 255, 0.15);
 
       &::after {
         display: none;
@@ -184,7 +186,7 @@
     flex-direction: row;
     gap: 24px;
     width: 100%;
-    padding: 0 30px 32px;
+    padding: 0;
     overflow-x: auto;
     scrollbar-width: none;
 
@@ -194,8 +196,7 @@
 
     @media (min-width: $bp-lg) {
       flex-direction: column;
-      gap: 30px;
-      padding: 0;
+      gap: $space-text-group;
       overflow-x: visible;
     }
   }
@@ -223,7 +224,21 @@
     }
 
     &--active {
-      color: $color-accent;
+      background: linear-gradient(90.13deg, #EF8080 0.84%, #F0145A 99.96%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__divider {
+    display: none;
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      flex-shrink: 0;
+      align-self: stretch;
+      @include hr-divider-vertical(rgba($color-white, 0.15));
     }
   }
 
@@ -231,12 +246,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 32px 30px 0;
+    padding: 0;
 
     @media (min-width: $bp-lg) {
-      width: 60%;
-      max-width: 580px;
-      padding: 48px 0 48px 60px;
+      flex: 1;
     }
   }
 
@@ -244,7 +257,9 @@
     display: none;
 
     &--active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      gap: $space-text-group;
     }
   }
 
@@ -255,7 +270,7 @@
     line-height: 1;
     letter-spacing: 0;
     color: $color-white;
-    margin: 0 0 30px;
+    margin: 0;
   }
 
   &__text {
@@ -274,50 +289,40 @@
 .services {
 
   &__inner {
-    max-width: 1600px;
+    max-width: $layout-shell-max;
     margin: 0 auto;
-    padding: 30px 30px 60px;
+    padding: 60px $layout-pad-inline-sm 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 
     @media (min-width: $bp-md) {
-      padding: 60px;
+      padding: 60px $layout-pad-inline-md;
     }
   }
 
   &__label {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #24A3FF;
-    margin: 0 0 5px;
-    display: inline-block;
-    cursor: pointer;
-    transition: color 0.2s;
-
-    &:hover {
-      color: #F0145A;
-    }
+    @include section-label;
   }
 
   &__title {
-    font-family: $font-family;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.211;
-    letter-spacing: 0;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 10px 0 48px;
+    @include section-title-gradient;
+    margin: 0;
+  }
+
+  &__heading {
+    @include section-heading-stack;
+  }
+
+  &__heading > &__label,
+  &__heading > &__title {
+    margin: 0;
   }
 
   &__list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: $space-text-group;
 
     @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
@@ -331,10 +336,27 @@
 
   &__item {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  &__item-link:hover &__item-title {
-    color: $color-accent;
+  &__item-link {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.88;
+    }
+
+    &:hover .services__item-title {
+      color: $color-accent;
+    }
   }
 
   &__item-icon {
@@ -342,10 +364,10 @@
     height: 92px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 24px;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     span {
       font-size: 64px;
@@ -356,6 +378,12 @@
     }
   }
 
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+  }
+
   &__item-title {
     font-family: $font-family;
     font-size: 22px;
@@ -363,7 +391,7 @@
     line-height: 1.227;
     letter-spacing: 0;
     color: #24a3ff;
-    margin: 0 0 12px;
+    margin: 0;
     transition: color 0.2s;
   }
 
@@ -392,6 +420,9 @@
 
 .services--page {
   .services__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
     padding-top: 132px;
 
     @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
@@ -404,7 +435,7 @@
   }
 
   .services__title {
-    margin-bottom: 30px;
+    margin: 0;
   }
 }
 
@@ -412,10 +443,10 @@
 
 .team {
   background-color: $color-white;
-  padding: 30px;
+  padding: $layout-pad-inline-sm $layout-pad-inline-sm 0;
 
   @media (min-width: $bp-md) {
-    padding: 60px;
+    padding: $layout-pad-inline-md $layout-pad-inline-md 0;
   }
 
   &__slider {
@@ -432,8 +463,19 @@
     width: 100%;
   }
 
+  &__link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover .team__label {
+      color: #F0145A;
+    }
+  }
+
   &__inner {
-    max-width: 1600px;
+    max-width: $layout-content-max;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -473,39 +515,38 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 30px;
+    padding: $space-text-group;
+    gap: $space-text-group;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+  }
+
+  &__heading > &__label,
+  &__heading > &__quote {
+    margin: 0;
   }
 
   &__label {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #24A3FF;
-    margin: 0 0 5px;
-    display: inline-block;
-    cursor: pointer;
-    transition: color 0.2s;
-
-    &:hover {
-      color: #F0145A;
-    }
+    @include section-label;
+    margin: 0;
   }
 
   &__quote {
-    font-family: $font-family;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.211;
-    letter-spacing: 0;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 0 0 30px;
+    @include section-title-gradient;
+    margin: 0;
     padding: 0;
+  }
+
+  &__byline {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
   }
 
   &__name {
@@ -515,7 +556,7 @@
     line-height: 1.25;
     letter-spacing: 0;
     color: #B3B3BA;
-    margin: 0 0 6px;
+    margin: 0;
   }
 
   &__role {
@@ -531,25 +572,15 @@
   &__dots {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    max-width: 1600px;
-    margin: 30px auto 0;
+    gap: $space-text-tight;
+    max-width: $layout-content-max;
+    margin: $space-text-group auto 0;
   }
 
   &__dot {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
-    background-color: rgba(#24A3FF, 0.2);
-    transition: background-color 0.2s;
-
-    &--active {
-      background-color: #24A3FF;
-    }
-
-    &:hover {
-      background-color: rgba(#24A3FF, 0.5);
-    }
+    @include slider-dot-base;
   }
 }
 
@@ -559,20 +590,15 @@
   padding: 60px 0 0;
 
   &__inner {
-    max-width: 1720px;
+    max-width: $layout-clients-max;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
   }
 
   &__title {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #323264;
-    margin: 0 0 30px;
+    @include section-eyebrow;
   }
 
   &__list {
@@ -621,55 +647,44 @@
 
 .publications {
   background-color: #F5F5FA;
-  padding: 30px 30px 0;
+  padding: $space-text-group $layout-pad-inline-sm 0;
 
   @media (min-width: $bp-md) {
-    padding: 60px 60px 0;
+    padding: 60px $layout-pad-inline-md 0;
   }
 
   &__inner {
-    max-width: 1600px;
+    max-width: $layout-content-max;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
   }
 
   &__label {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #24A3FF;
-    margin: 0 0 5px;
-    display: inline-block;
-    cursor: pointer;
-    transition: color 0.2s;
-
-    &:hover {
-      color: #F0145A;
-    }
+    @include section-label;
   }
 
   &__title {
-    font-family: $font-family;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.211;
-    letter-spacing: 0;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 10px 0 30px;
+    @include section-title-gradient;
+    margin: 0;
+  }
+
+  &__heading {
+    @include section-heading-stack;
+  }
+
+  &__heading > &__label,
+  &__heading > &__title {
+    margin: 0;
   }
 
   &__list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: $space-text-group;
     align-items: stretch;
-    padding-bottom: 30px;
-    border-bottom: 2px solid #E6E6F0;
+    padding-bottom: $space-text-group;
 
     @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
@@ -688,60 +703,5 @@
     }
   }
 
-  &__card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: $color-white;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  &__card-image {
-    width: 100%;
-    max-height: 200px;
-    aspect-ratio: 16 / 9;
-    background-color: $color-grey-bg-alt;
-    margin-bottom: 0;
-  }
-
-  &__card-body {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-  }
-
-  &__card-title {
-    font-family: $font-family;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: 0;
-    color: #24A3FF;
-    margin: 0 0 15px;
-  }
-
-  &__card-date {
-    display: block;
-    font-family: $font-family;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #B3B3BA;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 4px solid #E6E6F0;
-  }
-
-  &__card-text {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.571;
-    letter-spacing: 0;
-    color: $color-main-alt;
-    margin: 0;
-  }
+  @include publications-card;
 }

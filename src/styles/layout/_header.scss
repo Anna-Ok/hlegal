@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../abstracts/variables' as *;
 
 .header {
@@ -43,8 +44,12 @@
     color: $color-white;
     text-transform: lowercase;
     display: block;
-    margin-left: 0;
-    margin-right: auto;
+    margin: 0;
+
+    &[href] {
+      text-decoration: none;
+      color: inherit;
+    }
 
     @media (min-width: $bp-md) {
       display: none;
@@ -171,7 +176,7 @@
     transition: background 0.2s;
 
     &:active {
-      background: darken(#F5F5FA, 6%);
+      background: color.adjust(#F5F5FA, $lightness: -6%);
     }
 
     &--active {
@@ -179,41 +184,101 @@
     }
   }
 
+  // DOM order: __brand → __content (__top + __nav)
   &__inner {
-    max-width: 1604px;
-    height: auto;
-    margin: 0 auto;
-    padding: 15px;
+    width: 100%;
+    max-width: $layout-shell-max;
+    margin-inline: auto;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 12px;
+    padding: 15px;
 
     @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
       flex-direction: column;
-      height: auto;
-      padding: 50px 60px 24px;
       align-items: flex-start;
+      gap: $space-text-group;
+      padding: 50px $layout-pad-inline-md 24px;
     }
 
     @media (min-width: $bp-lg) {
-      height: 116px;
-      padding: 50px 60px 0;
+      flex-wrap: nowrap;
       align-items: flex-start;
+      gap: 40px;
+      min-height: 116px;
+      padding: 50px $layout-pad-inline-md 0;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+
+    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+      order: 1;
+    }
+
+    @media (min-width: $bp-lg) {
+      width: auto;
+      justify-content: flex-start;
+    }
+  }
+
+  &__content {
+    display: none;
+
+    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+      display: contents;
+    }
+
+    @media (min-width: $bp-lg) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      margin-left: auto;
+      flex: 0 0 auto;
+      min-width: 0;
+    }
+  }
+
+  &__top {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+
+    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+      display: flex;
+      width: 100%;
+      order: 0;
+    }
+
+    @media (min-width: $bp-lg) {
+      display: flex;
+      width: auto;
     }
   }
 
   &__logo-group {
     display: flex;
     align-items: center;
+    min-width: 0;
+    flex: 1;
 
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      order: 2;
-      margin-bottom: 30px;
+    @media (min-width: $bp-lg) {
+      flex: 0 1 auto;
     }
 
     .header__logo {
-      order: unset;
-      margin-bottom: 0;
+      margin: 0;
       padding: 0;
     }
   }
@@ -221,12 +286,7 @@
   &__logo {
     display: flex;
     align-items: center;
-
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      order: 2;
-      padding: 0;
-      margin-bottom: 30px;
-    }
+    flex-shrink: 0;
   }
 
   &__logo-img {
@@ -234,7 +294,7 @@
     width: auto;
     display: block;
 
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg}) {
+    @media (min-width: $bp-md) and (max-width: $bp-lg) {
       height: 60px;
     }
 
@@ -243,32 +303,71 @@
     }
   }
 
-  &__right {
+  &__nav {
     display: none;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 16px;
-
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      display: contents;
-    }
-
-    @media (min-width: $bp-lg) {
-      display: flex;
-    }
-  }
-
-  &__top {
-    display: flex;
-    align-items: center;
-    gap: 6px;
     padding: 0;
 
     @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      order: 1;
+      display: block;
       width: 100%;
-      padding: 0;
-      margin-bottom: 30px;
+      order: 2;
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      width: auto;
+      padding-bottom: 0;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  &__nav-link {
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: right;
+    color: $color-white;
+    text-transform: lowercase;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #24A3FF;
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      color: #24A3FF;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &--active {
+      color: $color-accent;
+
+      &::after {
+        background: $color-accent;
+        transform: scaleX(1);
+      }
     }
   }
 
@@ -350,69 +449,10 @@
     color: $color-white;
     font-size: 24px;
     border-radius: 50%;
-    transition: color 0.2s, background-color 0.2s;
-
-    &:hover {
-      color: $color-white;
-      background-color: $color-accent;
-    }
-  }
-
-  &__nav {
-    padding: 0;
-
-    @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
-      order: 3;
-      padding: 0;
-      margin-bottom: 60px;
-    }
-  }
-
-  &__nav-list {
-    display: flex;
-    gap: 15px;
-  }
-
-  &__nav-link {
-    font-family: $font-family;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0;
-    text-align: right;
-    color: $color-white;
-    text-transform: lowercase;
     transition: color 0.2s;
-    position: relative;
-    padding-bottom: 4px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #24A3FF;
-      transform: scaleX(0);
-      transition: transform 0.2s;
-    }
 
     &:hover {
-      color: #24A3FF;
-
-      &::after {
-        transform: scaleX(1);
-      }
-    }
-
-    &--active {
       color: $color-accent;
-
-      &::after {
-        background: $color-accent;
-        transform: scaleX(1);
-      }
     }
   }
 
@@ -435,7 +475,6 @@
         font-size: 36px;
         line-height: 1;
         letter-spacing: 0;
-        margin-right: 0;
       }
     }
   }

@@ -19,6 +19,8 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         team: resolve(__dirname, 'team.html'),
         'team-member': resolve(__dirname, 'team-member.html'),
+        publications: resolve(__dirname, 'publications.html'),
+        publication: resolve(__dirname, 'publication.html'),
       },
     },
   },

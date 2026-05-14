@@ -1,3 +1,4 @@
+import './utils/scrollToTop.js'
 import './styles/main.scss'
 
 const MEMBERS = {

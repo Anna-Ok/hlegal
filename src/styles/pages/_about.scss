@@ -1,0 +1,327 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ─── HEADER OVERRIDE ─────────────────────────────────────────────────────────
+
+.header--about .header__mobile-label {
+  color: #323264;
+}
+
+// ─── ABOUT INTRO ─────────────────────────────────────────────────────────────
+
+.about-intro {
+  padding: 132px $layout-pad-inline-sm $space-text-group;
+  background-color: $color-white;
+
+  @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+    padding: 280px $layout-pad-inline-md 60px;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding: 176px $layout-pad-inline-md 60px;
+  }
+
+  &__inner {
+    max-width: $layout-reading-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+
+    @media (min-width: $bp-lg) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 80px;
+    }
+  }
+
+  &__left {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    @include gradient-text;
+    margin: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__text {
+    @include body-text-lg;
+  }
+
+  &__divider {
+    display: none;
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      flex-shrink: 0;
+      align-self: stretch;
+      @include hr-divider-vertical;
+    }
+  }
+
+  &__stats {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+
+    @media (max-width: #{$bp-lg - 1px}) {
+      position: relative;
+      padding-inline-start: calc(#{$divider-thickness} + #{$space-text-group});
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0;
+        bottom: 0;
+        width: $divider-thickness;
+        background-color: #E6E6F0;
+      }
+    }
+
+    @media (min-width: $bp-lg) {
+      flex: 0 0 340px;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+  }
+
+  &__stat-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__stat-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  &__stat-num {
+    font-family: $font-family;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    @include gradient-text;
+    display: block;
+  }
+
+  &__stat-text {
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #323264;
+    margin: 0;
+  }
+}
+
+// ─── ABOUT BANNER ────────────────────────────────────────────────────────────
+
+.about-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $font-family;
+    font-size: 7vw;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: rgba($color-white, 0.85);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+}
+
+// ─── ABOUT QUALITY ───────────────────────────────────────────────────────────
+
+.about-quality {
+  padding: $space-text-group $layout-pad-inline-sm 60px;
+  background-color: $color-white;
+
+  @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+    padding: 60px $layout-pad-inline-md 80px;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding: 60px $layout-pad-inline-md 80px;
+  }
+
+  &__inner {
+    max-width: $layout-reading-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+
+    @media (min-width: $bp-lg) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 60px;
+    }
+  }
+
+  &__left {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__text {
+    @include body-text-lg;
+  }
+
+  &__right {
+    flex: 0 0 auto;
+
+    @media (min-width: $bp-lg) {
+      flex: 0 0 380px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-family;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    @include gradient-text;
+    margin: 0;
+  }
+}
+
+// ─── ACHIEVEMENTS ─────────────────────────────────────────────────────────────
+
+.achievements {
+  padding: 60px $layout-pad-inline-sm 50px;
+  background-color: #F5F5FA;
+
+  @media (min-width: $bp-md) {
+    padding: 60px $layout-pad-inline-md 50px;
+  }
+
+  &__inner {
+    max-width: $layout-content-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__title {
+    @include section-eyebrow;
+    margin: 0;
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    gap: 40px;
+    transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.15, 1);
+  }
+
+  &__item {
+    flex-shrink: 0;
+    height: 90px;
+    background-color: $color-white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 12px;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 14px;
+    @include slider-dot-base;
+  }
+}
+
+// ─── REVEAL ANIMATION (about.js uses .is-revealed, main.js uses .is-visible) ─
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-reveal="left"] {
+  transform: translateX(-24px);
+
+  &.is-revealed {
+    transform: translateX(0);
+  }
+}
+
+[data-reveal="right"] {
+  transform: translateX(24px);
+
+  &.is-revealed {
+    transform: translateX(0);
+  }
+}

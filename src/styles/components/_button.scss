@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as *;
+
+// ─── BUTTON ──────────────────────────────────────────────────────────────────
+// Base block. Always combine with a modifier: class="btn btn--blue"
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 12px;
+  font-family: $font-family;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+
+  &--blue {
+    background: #24A3FF;
+    box-shadow: 0 0 20px rgba(#24A3FF, 0.5);
+    color: $color-white;
+
+    &:hover {
+      background: #0085FF;
+      box-shadow: 0 0 28px rgba(#24A3FF, 0.65);
+    }
+
+    &:active {
+      background: $color-active-pressed;
+    }
+
+    &:disabled {
+      background: #EDEDF7;
+      box-shadow: none;
+      color: $color-grey-text;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &--loading {
+    background: #EDEDF7;
+    box-shadow: none;
+    color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 2.5px solid transparent;
+      border-top-color: $color-active;
+      border-right-color: $color-active;
+      border-radius: 50%;
+      animation: btn-spin 0.75s linear infinite;
+    }
+  }
+
+  &--sent {
+    background: #EDEDF7;
+    box-shadow: none;
+    color: $color-main;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}

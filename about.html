@@ -1,11 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <title>About Us — hlegal Law Company</title>
+  </head>
+  <body>
+
+    <div class="preloader" id="preloader">
+      <img src="./src/assets/logo.svg" alt="hlegal" class="preloader__logo" />
+      <div class="preloader__bar"><div class="preloader__progress"></div></div>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header class="header header--with-label header--light header--muted header--about">
+      <div class="header__mobile-top">
+        <div class="header__lang">
+          <a href="#" class="header__lang-link">УК</a>
+          <a href="#" class="header__lang-link">РУ</a>
+          <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+        </div>
+        <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+      </div>
+      <div class="header__inner">
+        <div class="header__brand">
+          <div class="header__logo-group">
+            <a href="/" class="header__logo">
+              <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
+            </a>
+            <span class="header__mobile-slash">/</span>
+            <span class="header__mobile-label">about us</span>
+          </div>
+          <button class="header__burger" aria-label="Меню">
+            <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+          </button>
+        </div>
+        <div class="header__content">
+        <div class="header__top">
+          <div class="header__lang">
+            <a href="#" class="header__lang-link">УК</a>
+            <a href="#" class="header__lang-link">РУ</a>
+            <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+          </div>
+          <span class="header__sep">•</span>
+          <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
+          <span class="header__sep">•</span>
+          <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+          <span class="header__sep">•</span>
+          <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+        </div>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li class="header__nav-item"><a href="/about.html" class="header__nav-link header__nav-link--active">about us</a></li>
+            <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
+            <li class="header__nav-item"><a href="/team.html" class="header__nav-link">team</a></li>
+            <li class="header__nav-item"><a href="/publications.html" class="header__nav-link">publications</a></li>
+            <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
+          </ul>
+        </nav>
+        </div>
+      </div>
+      <div class="header__mobile-menu" id="mobileMenu">
+        <div class="header__mobile-menu-overlay"></div>
+        <div class="header__mobile-menu-panel">
+          <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
+          <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+              <li><a href="/about.html" class="header__mobile-nav-link header__mobile-nav-link--active">about us</a></li>
+              <li><a href="/services.html" class="header__mobile-nav-link">services</a></li>
+              <li><a href="/team.html" class="header__mobile-nav-link">team</a></li>
+              <li><a href="/publications.html" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Intro: heading + stats -->
+      <section class="about-intro">
+        <div class="about-intro__inner">
+          <div class="about-intro__left" data-reveal="left">
+            <h1 class="about-intro__title">We turn over the idea of legal services</h1>
+            <div class="about-intro__body">
+              <p class="about-intro__text">Consolidating many years of experience and practice, the company's lawyers accompany complex projects and achieve the adoption of a number of decisions that are important for the industry. Many people form the practice of applying the law of the sea in Ukraine.</p>
+              <p class="about-intro__text">HLEGAL is a reliable business partner, confirmed by stable cooperation with international law firms, the trust of large Ukrainian and international companies, and the recognition of professional ratings.</p>
+            </div>
+          </div>
+          <div class="about-intro__divider"></div>
+          <div class="about-intro__stats" data-reveal="right">
+            <div class="about-intro__stat">
+              <div class="about-intro__stat-top">
+                <img src="./src/assets/Experience.svg" alt="" class="about-intro__stat-icon" aria-hidden="true" />
+                <span class="about-intro__stat-num">10+</span>
+              </div>
+              <p class="about-intro__stat-text">years of relevant experience</p>
+            </div>
+            <div class="about-intro__stat">
+              <div class="about-intro__stat-top">
+                <img src="./src/assets/Clients.svg" alt="" class="about-intro__stat-icon" aria-hidden="true" />
+                <span class="about-intro__stat-num">30+</span>
+              </div>
+              <p class="about-intro__stat-text">active clients who entrust us with their orders on a monthly basis</p>
+            </div>
+            <div class="about-intro__stat">
+              <div class="about-intro__stat-top">
+                <img src="./src/assets/Probono.svg" alt="" class="about-intro__stat-icon" aria-hidden="true" />
+                <span class="about-intro__stat-num">500+</span>
+              </div>
+              <p class="about-intro__stat-text">hours of pro bono work annually</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full-width team photo banner -->
+      <section class="about-banner">
+        <div class="about-banner__image-wrap">
+          <img src="./src/assets/about.webp" alt="HLEGAL team" class="about-banner__image" />
+          <span class="about-banner__label">TEAM</span>
+        </div>
+      </section>
+
+      <!-- Quality section -->
+      <section class="about-quality">
+        <div class="about-quality__inner">
+          <div class="about-quality__left" data-reveal="left">
+            <p class="about-quality__text">The historically unchanged legal profession has begun to reformat in recent years. Clients are feeling this, but law firms are still resisting evolution. Clients need convenience, simplicity, transparent payment. Google, IBM WatsOn, Symantec Clearwell prove that the technological revolution in legal services has begun and is imminent.</p>
+            <p class="about-quality__text">Quality is what we care about the most.</p>
+            <p class="about-quality__text">It's simple. If you are unhappy with our work, we will refund your money. We trust our clients. And we want our clients to trust us too.</p>
+          </div>
+          <div class="about-quality__right" data-reveal="right">
+            <h2 class="about-quality__heading">Quality is what we care about the most.</h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievements -->
+      <section class="achievements">
+        <div class="achievements__inner">
+          <h2 class="achievements__title">ACHIEVEMENTS</h2>
+          <div class="achievements__slider" id="achievementsSlider">
+            <div class="achievements__track" id="achievementsTrack">
+              <div class="achievements__item">
+                <img src="data:image/webp;base64,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" alt="Legal 500" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/awards.webp" alt="Юридическая премия года" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/lider.webp" alt="Лідери ринку 2017" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/ulf.webp" alt="ULF 2017 Ukrainian Law Firms" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/lider.webp" alt="Лідери ринку 2017" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/ulf.webp" alt="ULF 2017 Ukrainian Law Firms" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/awards.webp" alt="Юридическая премия года" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="data:image/webp;base64,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" alt="Legal 500" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/ulf.webp" alt="ULF 2017 Ukrainian Law Firms" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="data:image/webp;base64,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" alt="Legal 500" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/lider.webp" alt="Лідери ринку 2017" class="achievements__img" />
+              </div>
+              <div class="achievements__item">
+                <img src="./src/assets/awards.webp" alt="Юридическая премия года" class="achievements__img" />
+              </div>
+            </div>
+          </div>
+          <div class="achievements__dots" id="achievementsDots"></div>
+        </div>
+      </section>
+
     
-</body>
+    </main>
+
+    <footer class="footer">
+      <hr class="footer__divider" aria-hidden="true" />
+      <div class="footer__inner">
+        <div class="footer__left">
+          <div class="footer__address-row">
+            <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
+            <span class="footer__sep">•</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=50.43686007158957%2C30.529531777143486" class="footer__map" target="_blank" rel="noopener noreferrer">ON MAP</a>
+          </div>
+          <div class="footer__contact-row">
+            <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+            <span class="footer__sep">•</span>
+            <a href="tel:+380800211927" class="footer__phone">0800 211 927</a>
+            <span class="footer__sep">•</span>
+            <a href="mailto:contact@forstudy.space" class="footer__email">contact@forstudy.space</a>
+          </div>
+        </div>
+        <p class="footer__copyright">© 2021 HLEGAL Law company, LLC</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/about.js"></script>
+  </body>
 </html>

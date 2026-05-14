@@ -1,3 +1,4 @@
+import './utils/scrollToTop.js'
 import './styles/main.scss'
 
 // Preloader
@@ -29,6 +30,11 @@ const navLinks = document.querySelectorAll('.header__nav-link');
 const mobileLabel = document.querySelector('.header__mobile-label');
 const sections = document.querySelectorAll('section[id], footer[id]');
 
+const sectionIdFromHref = (href) => {
+  if (!href || !href.startsWith('#')) return null;
+  return href.slice(1);
+};
+
 const updateActiveSection = () => {
   let current = '';
   sections.forEach(section => {
@@ -38,16 +44,16 @@ const updateActiveSection = () => {
   });
 
   navLinks.forEach(link => {
-    const href = link.getAttribute('href')?.replace('#', '');
-    link.classList.toggle('header__nav-link--active', href === current);
+    const sectionId = sectionIdFromHref(link.getAttribute('href') || '');
+    link.classList.toggle('header__nav-link--active', sectionId !== null && sectionId === current);
   });
 
   document.querySelectorAll('.header__mobile-nav-link').forEach(link => {
-    const href = link.getAttribute('href')?.replace('#', '');
-    link.classList.toggle('header__mobile-nav-link--active', href === current);
+    const sectionId = sectionIdFromHref(link.getAttribute('href') || '');
+    link.classList.toggle('header__mobile-nav-link--active', sectionId !== null && sectionId === current);
   });
 
-  if (mobileLabel) {
+  if (mobileLabel && current) {
     mobileLabel.textContent = current.replace('-', ' ');
   }
 };

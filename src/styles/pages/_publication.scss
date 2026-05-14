@@ -1,0 +1,319 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+body:has(.pub-article) {
+  .header__mobile-label {
+    color: #323264;
+  }
+}
+
+// ── Article detail page ───────────────────────────────────────────────────────
+
+.pub-article {
+  background: $color-white;
+
+  &__hero {
+    width: 100%;
+    max-width: calc(#{$layout-reading-max} + 2 * #{$layout-pad-inline-xl});
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding-top: 132px;
+    padding-inline: $layout-pad-inline-sm;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $bp-md) {
+      padding-top: 280px;
+      padding-inline: $layout-pad-inline-md;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding-top: 176px;
+      padding-inline: $layout-pad-inline-xl;
+    }
+  }
+
+  &__hero-img {
+    width: 100%;
+    max-width: $layout-reading-max;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 12px;
+
+    @media (max-width: #{$bp-md - 1px}) {
+      height: 300px;
+    }
+  }
+
+  &--no-cover {
+    padding-top: 132px;
+
+    @media (min-width: $bp-md) {
+      padding-top: 280px;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding-top: 176px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    max-width: calc(#{$layout-reading-max} + 2 * #{$layout-pad-inline-xl});
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding: 40px $layout-pad-inline-sm 60px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+
+    @media (min-width: $bp-md) {
+      padding: 50px $layout-pad-inline-md 80px;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding-left: $layout-pad-inline-xl;
+      padding-right: $layout-pad-inline-xl;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+    margin: 0;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+    margin: 0;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: $color-main;
+    margin: 0;
+
+    @media (min-width: $bp-lg) {
+      font-size: 30px;
+    }
+  }
+
+  &__date {
+    display: block;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #B3B3BA;
+    margin: 0;
+  }
+
+  &__divider {
+    @include hr-divider-grey;
+  }
+
+  // ── Body content ─────────────────────────────────────────────────────────────
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+
+    > .pub-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: $space-text-tight;
+      margin: 0;
+    }
+
+    p {
+      font-family: $font-family;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: $color-main;
+      margin: 0;
+    }
+
+    > .pub-highlight {
+      display: block;
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.4;
+      @include gradient-text;
+      margin: 0;
+
+      @media (max-width: #{$bp-md - 1px}) {
+        font-size: 18px;
+      }
+    }
+
+    .pub-subheading {
+      display: block;
+      font-family: $font-family;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: $color-main;
+      margin: 0;
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: pub-counter;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: $space-text-tight;
+
+      li {
+        counter-increment: pub-counter;
+        display: flex;
+        gap: $space-text-tight;
+        font-family: $font-family;
+        font-size: 15px;
+        line-height: 1.7;
+        color: $color-main;
+        margin: 0;
+
+        &::before {
+          content: counter(pub-counter) '.';
+          font-weight: 700;
+          color: #24A3FF;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    > .pub-figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-text-tight;
+      text-align: center;
+      margin: 0;
+
+      img {
+        max-width: 640px;
+        width: 100%;
+        display: inline-block;
+      }
+
+      .pub-caption {
+        display: block;
+        font-family: $font-family;
+        font-size: 13px;
+        color: #B3B3BA;
+        margin: 0;
+      }
+    }
+  }
+
+  // ── Share ─────────────────────────────────────────────────────────────────────
+
+  &__share {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding-top: $space-text-group;
+    border-top: 1px solid #E6E6F0;
+  }
+
+  &__share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #F5F5FA;
+    text-decoration: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+
+    &:hover {
+      background: #EAEAF5;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    &--fb svg { fill: #1877F2; }
+    &--tg svg { fill: #24CBFF; }
+    &--li svg { fill: #0A66C2; }
+  }
+}
+
+// ── Recommended section ───────────────────────────────────────────────────────
+
+.pub-recommended {
+  background: #F5F5FA;
+  padding: 40px $layout-pad-inline-sm 60px;
+  border-top: 2px solid #E6E6F0;
+
+  @media (min-width: $bp-md) {
+    padding: 40px $layout-pad-inline-md 80px;
+  }
+
+  &__inner {
+    max-width: $layout-content-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+  }
+
+  &__label {
+    @include section-label;
+  }
+
+  &__title {
+    @include section-title-gradient;
+    margin: 0;
+
+    @media (max-width: #{$bp-md - 1px}) {
+      font-size: 28px;
+    }
+  }
+
+  &__heading {
+    @include section-heading-stack;
+  }
+
+  &__heading > &__label,
+  &__heading > &__title {
+    margin: 0;
+  }
+}
+
+// ── Card hover ────────────────────────────────────────────────────────────────
+
+.publications__card-link {
+  display: block;
+  text-decoration: none;
+  height: 100%;
+
+  .publications__card {
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  &:hover .publications__card {
+    box-shadow: 0 8px 24px rgba(#383966, 0.1);
+    transform: translateY(-2px);
+  }
+}

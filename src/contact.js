@@ -1,4 +1,6 @@
+import './utils/scrollToTop.js'
 import './styles/main.scss'
+import { initForm } from './utils/initForm.js'
 
 // Preloader
 const preloader = document.getElementById('preloader');
@@ -52,24 +54,11 @@ document.querySelectorAll('.header__lang-link').forEach(link => {
   });
 });
 
-// Input clear buttons
-document.querySelectorAll('.contact-page__field').forEach(field => {
-  const input = field.querySelector('.contact-page__input');
-  const clear = field.querySelector('.contact-page__clear');
-
-  input.addEventListener('input', () => {
-    field.classList.toggle('contact-page__field--filled', input.value.length > 0);
-  });
-
-  clear.addEventListener('click', () => {
-    input.value = '';
-    field.classList.remove('contact-page__field--filled');
-    input.focus();
-  });
+initForm({
+  form: document.querySelector('.contact-page__form'),
+  block: 'contact-page',
+  submit: document.querySelector('.contact-page__submit'),
 });
-
-// Form submit
-document.querySelector('.contact-page__form')?.addEventListener('submit', e => e.preventDefault());
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {

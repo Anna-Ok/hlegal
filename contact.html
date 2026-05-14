@@ -28,39 +28,41 @@
         <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
       </div>
       <div class="header__inner">
-        <div class="header__logo-group">
-          <a href="/" class="header__logo">
-            <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
-          </a>
-          <span class="header__mobile-slash">/</span>
-          <span class="header__mobile-label">contact</span>
-        </div>
-        <button class="header__burger" aria-label="Меню">
-          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
-        </button>
-        <div class="header__right">
-          <div class="header__top">
-            <div class="header__lang">
-              <a href="#" class="header__lang-link">УК</a>
-              <a href="#" class="header__lang-link">РУ</a>
-              <a href="#" class="header__lang-link header__lang-link--active">EN</a>
-            </div>
-            <span class="header__sep">•</span>
-            <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
-            <span class="header__sep">•</span>
-            <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
-            <span class="header__sep">•</span>
-            <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+        <div class="header__brand">
+          <div class="header__logo-group">
+            <a href="/" class="header__logo">
+              <img src="./src/assets/logo_dark.svg" alt="hlegal law company" class="header__logo-img" />
+            </a>
+            <span class="header__mobile-slash">/</span>
+            <span class="header__mobile-label">contact</span>
           </div>
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li class="header__nav-item"><a href="/#about" class="header__nav-link">about us</a></li>
-              <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
-              <li class="header__nav-item"><a href="/team.html" class="header__nav-link">team</a></li>
-              <li class="header__nav-item"><a href="/#publications" class="header__nav-link">publications</a></li>
-              <li class="header__nav-item"><a href="/contact.html" class="header__nav-link header__nav-link--active">contact</a></li>
-            </ul>
-          </nav>
+          <button class="header__burger" aria-label="Меню">
+            <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+          </button>
+        </div>
+        <div class="header__content">
+        <div class="header__top">
+          <div class="header__lang">
+            <a href="#" class="header__lang-link">УК</a>
+            <a href="#" class="header__lang-link">РУ</a>
+            <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+          </div>
+          <span class="header__sep">•</span>
+          <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
+          <span class="header__sep">•</span>
+          <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+          <span class="header__sep">•</span>
+          <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+        </div>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li class="header__nav-item"><a href="/about.html" class="header__nav-link">about us</a></li>
+            <li class="header__nav-item"><a href="/services.html" class="header__nav-link">services</a></li>
+            <li class="header__nav-item"><a href="/team.html" class="header__nav-link">team</a></li>
+            <li class="header__nav-item"><a href="/publications.html" class="header__nav-link">publications</a></li>
+            <li class="header__nav-item"><a href="/contact.html" class="header__nav-link header__nav-link--active">contact</a></li>
+          </ul>
+        </nav>
         </div>
       </div>
       <div class="header__mobile-menu" id="mobileMenu">
@@ -69,10 +71,10 @@
           <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
           <nav class="header__mobile-nav">
             <ul class="header__mobile-nav-list">
-              <li><a href="/#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/about.html" class="header__mobile-nav-link">about us</a></li>
               <li><a href="/services.html" class="header__mobile-nav-link">services</a></li>
               <li><a href="/team.html" class="header__mobile-nav-link">team</a></li>
-              <li><a href="/#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/publications.html" class="header__mobile-nav-link">publications</a></li>
               <li><a href="/contact.html" class="header__mobile-nav-link header__mobile-nav-link--active">contact</a></li>
             </ul>
           </nav>
@@ -87,8 +89,10 @@
           <div class="contact-page__info">
             <address class="contact-page__address">Kyiv,<br>Mechnikova str, 14</address>
             <hr class="contact-page__divider" />
+            <div class="contact-page__contacts">
             <a href="tel:+380800211927" class="contact-page__phone">0800 211 927</a>
             <a href="mailto:contact@forstudy.space" class="contact-page__email">contact@forstudy.space</a>
+            </div>
             <hr class="contact-page__divider" />
             <a href="#" class="contact-page__fb">
               <span class="contact-page__fb-icon"><span class="icon-Facebook-Header"></span></span>
@@ -99,21 +103,52 @@
           <div class="contact-page__card">
             <h2 class="contact-page__title">We would like to <span>help you</span></h2>
             <form class="contact-page__form" novalidate>
+              <div class="contact-page__form-group">
               <div class="contact-page__field">
-                <input type="text" class="contact-page__input" placeholder="Name" />
-                <button type="button" class="contact-page__clear" aria-label="Clear">&#10005;</button>
+                <div class="contact-page__input-wrap">
+                  <input type="text" class="contact-page__input" name="name" placeholder="Name" required aria-describedby="contact-name-error" />
+                  <button type="button" class="contact-page__clear" aria-label="Clear name">&#10005;</button>
+                </div>
+                <p class="contact-page__error" id="contact-name-error" role="alert">
+                  <span class="contact-page__error-icon" aria-hidden="true">!</span>
+                  <span class="contact-page__error-text"></span>
+                </p>
               </div>
-              <textarea class="contact-page__textarea" placeholder="Message"></textarea>
+              <div class="contact-page__field">
+                <div class="contact-page__input-wrap contact-page__input-wrap--textarea">
+                  <textarea class="contact-page__textarea" name="message" placeholder="Message" required aria-describedby="contact-message-error"></textarea>
+                  <button type="button" class="contact-page__clear" aria-label="Clear message">&#10005;</button>
+                </div>
+                <p class="contact-page__error" id="contact-message-error" role="alert">
+                  <span class="contact-page__error-icon" aria-hidden="true">!</span>
+                  <span class="contact-page__error-text"></span>
+                </p>
+              </div>
+              </div>
+              <div class="contact-page__form-group">
               <p class="contact-page__group-label">HOW TO ANSWER YOU?</p>
               <div class="contact-page__field">
-                <input type="tel" class="contact-page__input" placeholder="Phone number" />
-                <button type="button" class="contact-page__clear" aria-label="Clear">&#10005;</button>
+                <div class="contact-page__input-wrap">
+                  <input type="tel" class="contact-page__input" name="phone" placeholder="Phone number" required aria-describedby="contact-phone-error" />
+                  <button type="button" class="contact-page__clear" aria-label="Clear phone number">&#10005;</button>
+                </div>
+                <p class="contact-page__error" id="contact-phone-error" role="alert">
+                  <span class="contact-page__error-icon" aria-hidden="true">!</span>
+                  <span class="contact-page__error-text"></span>
+                </p>
               </div>
               <div class="contact-page__field">
-                <input type="email" class="contact-page__input" placeholder="Email" />
-                <button type="button" class="contact-page__clear" aria-label="Clear">&#10005;</button>
+                <div class="contact-page__input-wrap">
+                  <input type="email" class="contact-page__input" name="email" placeholder="Email" required aria-describedby="contact-email-error" />
+                  <button type="button" class="contact-page__clear" aria-label="Clear email">&#10005;</button>
+                </div>
+                <p class="contact-page__error" id="contact-email-error" role="alert">
+                  <span class="contact-page__error-icon" aria-hidden="true">!</span>
+                  <span class="contact-page__error-text"></span>
+                </p>
               </div>
-              <button type="submit" class="contact-page__submit">Send message</button>
+              </div>
+              <button type="submit" class="contact-page__submit btn btn--blue">Send message</button>
             </form>
           </div>
 
@@ -127,7 +162,7 @@
           <div class="footer__address-row">
             <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
             <span class="footer__sep">•</span>
-            <a href="#map" class="footer__map">ON MAP</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=50.43686007158957%2C30.529531777143486" class="footer__map" target="_blank" rel="noopener noreferrer">ON MAP</a>
           </div>
           <div class="footer__contact-row">
             <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>

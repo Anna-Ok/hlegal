@@ -24,21 +24,52 @@
         <button class="modal__close" aria-label="Close">&#10005;</button>
         <h2 class="modal__title" id="modalTitle">We would like to help you</h2>
         <form class="modal__form" novalidate>
+          <div class="modal__form-group">
           <div class="modal__field">
-            <input type="text" class="modal__input" placeholder="Name" />
-            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+            <div class="modal__input-wrap">
+              <input type="text" class="modal__input" name="name" placeholder="Name" required aria-describedby="modal-name-error" />
+              <button type="button" class="modal__clear" aria-label="Clear name">&#10005;</button>
+            </div>
+            <p class="modal__error" id="modal-name-error" role="alert">
+              <span class="modal__error-icon" aria-hidden="true">!</span>
+              <span class="modal__error-text"></span>
+            </p>
           </div>
-          <textarea class="modal__textarea" placeholder="Message"></textarea>
+          <div class="modal__field">
+            <div class="modal__input-wrap modal__input-wrap--textarea">
+              <textarea class="modal__textarea" name="message" placeholder="Message" required aria-describedby="modal-message-error"></textarea>
+              <button type="button" class="modal__clear" aria-label="Clear message">&#10005;</button>
+            </div>
+            <p class="modal__error" id="modal-message-error" role="alert">
+              <span class="modal__error-icon" aria-hidden="true">!</span>
+              <span class="modal__error-text"></span>
+            </p>
+          </div>
+          </div>
+          <div class="modal__form-group">
           <p class="modal__group-label">HOW TO ANSWER YOU?</p>
           <div class="modal__field">
-            <input type="tel" class="modal__input" placeholder="Phone number" />
-            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+            <div class="modal__input-wrap">
+              <input type="tel" class="modal__input" name="phone" placeholder="Phone number" required aria-describedby="modal-phone-error" />
+              <button type="button" class="modal__clear" aria-label="Clear phone number">&#10005;</button>
+            </div>
+            <p class="modal__error" id="modal-phone-error" role="alert">
+              <span class="modal__error-icon" aria-hidden="true">!</span>
+              <span class="modal__error-text"></span>
+            </p>
           </div>
           <div class="modal__field">
-            <input type="email" class="modal__input" placeholder="Email" />
-            <button type="button" class="modal__clear" aria-label="Очистити">&#10005;</button>
+            <div class="modal__input-wrap">
+              <input type="email" class="modal__input" name="email" placeholder="Email" required aria-describedby="modal-email-error" />
+              <button type="button" class="modal__clear" aria-label="Clear email">&#10005;</button>
+            </div>
+            <p class="modal__error" id="modal-email-error" role="alert">
+              <span class="modal__error-icon" aria-hidden="true">!</span>
+              <span class="modal__error-text"></span>
+            </p>
           </div>
-          <button type="submit" class="modal__submit">Send message</button>
+          </div>
+          <button type="submit" class="modal__submit btn btn--blue">Send message</button>
         </form>
       </div>
     </div>
@@ -53,39 +84,41 @@
         <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
       </div>
       <div class="header__inner">
-        <div class="header__logo-group">
-          <a href="/" class="header__logo">
-            <img src="./src/assets/logo.svg" alt="hlegal law company" class="header__logo-img" />
-          </a>
-          <span class="header__mobile-slash">/</span>
-          <a href="/services.html" class="header__mobile-label">services</a>
-        </div>
-        <button class="header__burger" aria-label="Меню">
-          <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
-        </button>
-        <div class="header__right">
-          <div class="header__top">
-            <div class="header__lang">
-              <a href="#" class="header__lang-link">УК</a>
-              <a href="#" class="header__lang-link">РУ</a>
-              <a href="#" class="header__lang-link header__lang-link--active">EN</a>
-            </div>
-            <span class="header__sep">•</span>
-            <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
-            <span class="header__sep">•</span>
-            <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
-            <span class="header__sep">•</span>
-            <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+        <div class="header__brand">
+          <div class="header__logo-group">
+            <a href="/" class="header__logo">
+              <img src="./src/assets/logo.svg" alt="hlegal law company" class="header__logo-img" />
+            </a>
+            <span class="header__mobile-slash">/</span>
+            <a href="/services.html" class="header__mobile-label">services</a>
           </div>
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li class="header__nav-item"><a href="/#about" class="header__nav-link">about us</a></li>
-              <li class="header__nav-item"><a href="/services.html" class="header__nav-link header__nav-link--active">services</a></li>
-              <li class="header__nav-item"><a href="/#team" class="header__nav-link">team</a></li>
-              <li class="header__nav-item"><a href="/#publications" class="header__nav-link">publications</a></li>
-              <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
-            </ul>
-          </nav>
+          <button class="header__burger" aria-label="Меню">
+            <img src="./src/assets/hamburger.svg" alt="" class="header__burger-icon" />
+          </button>
+        </div>
+        <div class="header__content">
+        <div class="header__top">
+          <div class="header__lang">
+            <a href="#" class="header__lang-link">УК</a>
+            <a href="#" class="header__lang-link">РУ</a>
+            <a href="#" class="header__lang-link header__lang-link--active">EN</a>
+          </div>
+          <span class="header__sep">•</span>
+          <address class="header__address">Kyiv, Mechnikova str, 14/1</address>
+          <span class="header__sep">•</span>
+          <a href="tel:+380800211927" class="header__phone">0800 211 927</a>
+          <span class="header__sep">•</span>
+          <a href="#" class="header__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>
+        </div>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li class="header__nav-item"><a href="/about.html" class="header__nav-link">about us</a></li>
+            <li class="header__nav-item"><a href="/services.html" class="header__nav-link header__nav-link--active">services</a></li>
+            <li class="header__nav-item"><a href="/#team" class="header__nav-link">team</a></li>
+            <li class="header__nav-item"><a href="/publications.html" class="header__nav-link">publications</a></li>
+            <li class="header__nav-item"><a href="/contact.html" class="header__nav-link">contact</a></li>
+          </ul>
+        </nav>
         </div>
       </div>
       <div class="header__mobile-menu" id="mobileMenu">
@@ -94,10 +127,10 @@
           <button class="header__mobile-menu-close" aria-label="Закрити">&#10005;</button>
           <nav class="header__mobile-nav">
             <ul class="header__mobile-nav-list">
-              <li><a href="/#about" class="header__mobile-nav-link">about us</a></li>
+              <li><a href="/about.html" class="header__mobile-nav-link">about us</a></li>
               <li><a href="/services.html" class="header__mobile-nav-link header__mobile-nav-link--active">services</a></li>
               <li><a href="/#team" class="header__mobile-nav-link">team</a></li>
-              <li><a href="/#publications" class="header__mobile-nav-link">publications</a></li>
+              <li><a href="/publications.html" class="header__mobile-nav-link">publications</a></li>
               <li><a href="/contact.html" class="header__mobile-nav-link">contact</a></li>
             </ul>
           </nav>
@@ -115,7 +148,7 @@
           <h1 class="service__title" data-reveal data-delay="100">IT and e-commerce</h1>
           <p class="service__desc" data-reveal data-delay="180">An endless stream of contracts, tax issues, labor relations, corporate papers — legal work distracts you from doing business. But there is not much work to do to hire an in-house lawyer.</p>
           <p class="service__desc" data-reveal data-delay="240">In addition, over time, the work will become the same type and uninteresting for a full-time lawyer. And we know very well how difficult it is to find a good candidate with experience in the field of information technology in Ukraine.</p>
-          <button class="service__cta" id="openModal" data-reveal data-delay="300">Free consultation</button>
+          <button type="button" class="service__cta btn btn--blue" id="openModal" data-reveal data-delay="300">Free consultation</button>
           <hr class="service__divider" data-reveal data-delay="360" />
           <div class="service__list-section" data-reveal data-delay="420">
             <p class="service__list-label">Services in this area:</p>
@@ -135,8 +168,10 @@
 
       <section class="publications" id="publications">
         <div class="publications__inner">
-          <p class="publications__label" data-reveal>PUBLICATIONS <img src="./src/assets/arrow.svg" class="label__arrow" alt="" /></p>
+          <div class="publications__heading">
+          <p class="publications__label" data-reveal>PUBLICATIONS <svg class="label__arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 1.5L8 6L3.5 10.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></p>
           <h2 class="publications__title" data-reveal data-delay="120">Recommended</h2>
+          </div>
           <ul class="publications__list">
             <li class="publications__item">
               <article class="publications__card">
@@ -175,12 +210,13 @@
     </main>
 
     <footer class="footer" id="contact">
+      <hr class="footer__divider" aria-hidden="true" />
       <div class="footer__inner" data-reveal>
         <div class="footer__left">
           <div class="footer__address-row">
             <address class="footer__address">Kyiv, Mechnikova str, 14/1</address>
             <span class="footer__sep">•</span>
-            <a href="#map" class="footer__map">ON MAP</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=50.43686007158957%2C30.529531777143486" class="footer__map" target="_blank" rel="noopener noreferrer">ON MAP</a>
           </div>
           <div class="footer__contact-row">
             <a href="#" class="footer__social" aria-label="Facebook"><span class="icon-Facebook-Header"></span></a>

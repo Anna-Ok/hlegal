@@ -1,14 +1,21 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+body:has(.service__hero) {
+  .header__mobile-label {
+    color: $color-white;
+  }
+}
 
 .service {
   &__hero {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 176px 30px 70px;
+    padding: 176px $layout-pad-inline-sm 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: $space-text-group;
     text-align: center;
   }
 
@@ -36,10 +43,7 @@
     font-size: 38px;
     font-weight: 700;
     line-height: 1.2;
-    background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @include gradient-text;
     margin: 0;
   }
 
@@ -53,44 +57,46 @@
     text-align: center;
   }
 
-  &__cta {
-    display: inline-flex;
+  &__pitch {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 208px;
-    height: 56px;
-    padding: 18px 30px;
-    gap: 10px;
-    border: none;
-    border-radius: 12px;
-    background: #24A3FF;
-    box-shadow: 0px 0px 20px 0px rgba(#24A3FF, 0.5);
-    color: $color-white;
-    font-family: $font-family;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
-    margin-top: 8px;
+    gap: $space-text-group;
+    width: 100%;
+  }
 
-    &:hover {
-      background: $color-active-hover;
-      box-shadow: 0px 0px 28px 0px rgba(#24A3FF, 0.65);
-    }
+  &__descs {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
+    width: 100%;
+  }
+
+  &__cta {
+    width: 208px;
+    margin: 0;
+  }
+
+  &__followup {
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-group;
+    padding-top: 60px;
+    width: 100%;
   }
 
   &__divider {
-    width: 100%;
-    border: none;
-    height: 4px;
+    @include hr-divider-grey;
     background-color: rgba($color-white, 0.2);
-    margin: 60px 0 0;
   }
 
   &__list-section {
     width: 100%;
     text-align: left;
-    margin-top: 34px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-text-tight;
   }
 
   &__list-label {
@@ -98,17 +104,17 @@
     font-family: $font-family;
     font-size: 15px;
     font-weight: 700;
-    margin: 0 0 20px;
+    margin: 0;
   }
 
   &__list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: $space-text-tight;
 
     @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px 60px;
+      gap: $space-text-tight $space-text-group;
     }
   }
 
@@ -131,17 +137,5 @@
       background: $color-accent;
       flex-shrink: 0;
     }
-  }
-}
-
-// Make services__item on home page clickable
-.services__item-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s;
-
-  &:hover {
-    opacity: 0.88;
   }
 }
