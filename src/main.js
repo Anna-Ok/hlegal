@@ -141,11 +141,87 @@ requestAnimationFrame(() => {
 
 const dots = document.querySelectorAll('.team__dot');
 const track = document.querySelector('.team__track');
+const teamSlider = document.querySelector('.team__slider');
+const teamSlides = document.querySelectorAll('.team__slide');
 
-dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    dots.forEach(d => d.classList.remove('team__dot--active'));
-    dot.classList.add('team__dot--active');
-    track.style.transform = `translateX(-${index * 100}%)`;
+if (track && dots.length && teamSlider) {
+  let teamIndex = 0;
+  const slideCount = dots.length;
+
+  const setTeamSlide = (index, { animate = true } = {}) => {
+    teamIndex = Math.max(0, Math.min(slideCount - 1, index));
+    track.style.transition = animate ? '' : 'none';
+    track.style.transform = `translateX(-${teamIndex * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('team__dot--active', i === teamIndex));
+    teamSlides.forEach((s, i) => s.classList.toggle('team__slide--active', i === teamIndex));
+  };
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => setTeamSlide(index));
   });
-});
+
+  let dragStartX = 0;
+  let dragLastX = 0;
+  let dragging = false;
+  let suppressLinkClick = false;
+  let activePointerId = null;
+
+  const onTeamPointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true;
+    suppressLinkClick = false;
+    dragStartX = e.clientX;
+    dragLastX = dragStartX;
+    activePointerId = e.pointerId;
+    teamSlider.classList.add('team__slider--dragging');
+    track.style.transition = 'none';
+    teamSlider.setPointerCapture(e.pointerId);
+  };
+
+  const onTeamPointerMove = (e) => {
+    if (!dragging || e.pointerId !== activePointerId) return;
+    dragLastX = e.clientX;
+    let dx = dragLastX - dragStartX;
+    if (teamIndex === 0) dx = Math.min(0, dx);
+    if (teamIndex === slideCount - 1) dx = Math.max(0, dx);
+    if (Math.abs(dx) > 10) suppressLinkClick = true;
+    track.style.transform = `translateX(calc(-${teamIndex * 100}% + ${dx}px))`;
+  };
+
+  const finishTeamDrag = (e) => {
+    if (!dragging || e.pointerId !== activePointerId) return;
+    dragging = false;
+    activePointerId = null;
+    teamSlider.classList.remove('team__slider--dragging');
+    try {
+      teamSlider.releasePointerCapture(e.pointerId);
+    } catch (_) {
+      /* pointer already released */
+    }
+
+    const dx = dragLastX - dragStartX;
+    const threshold = Math.min(teamSlider.offsetWidth * 0.12, 80);
+    let next = teamIndex;
+    if (dx < -threshold) next = teamIndex + 1;
+    else if (dx > threshold) next = teamIndex - 1;
+
+    track.style.transition = '';
+    setTeamSlide(next);
+  };
+
+  teamSlider.addEventListener('pointerdown', onTeamPointerDown);
+  teamSlider.addEventListener('pointermove', onTeamPointerMove);
+  teamSlider.addEventListener('pointerup', finishTeamDrag);
+  teamSlider.addEventListener('pointercancel', finishTeamDrag);
+
+  teamSlider.addEventListener(
+    'click',
+    (e) => {
+      if (!suppressLinkClick) return;
+      e.preventDefault();
+      e.stopPropagation();
+      suppressLinkClick = false;
+    },
+    true
+  );
+}

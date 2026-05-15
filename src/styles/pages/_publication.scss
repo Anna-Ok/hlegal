@@ -96,15 +96,11 @@ body:has(.pub-article) {
 
   &__title {
     font-family: $font-family;
-    font-size: 26px;
     font-weight: 700;
     line-height: 1.25;
     color: $color-main;
     margin: 0;
-
-    @media (min-width: $bp-lg) {
-      font-size: 30px;
-    }
+    @include heading-responsive(30px);
   }
 
   &__date {
@@ -285,10 +281,6 @@ body:has(.pub-article) {
   &__title {
     @include section-title-gradient;
     margin: 0;
-
-    @media (max-width: #{$bp-md - 1px}) {
-      font-size: 28px;
-    }
   }
 
   &__heading {

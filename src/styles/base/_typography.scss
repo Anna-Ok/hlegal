@@ -4,10 +4,10 @@
 h1 {
   font-family: $font-family;
   font-weight: 700;
-  font-size: 36px;
   line-height: 1.15;
   color: $color-white;
   margin: 0;
+  font-size: $heading-size-mobile;
 
   @media (min-width: $bp-md) {
     font-size: 52px;
@@ -22,9 +22,9 @@ h1 {
 h2 {
   font-family: $font-family;
   font-weight: 700;
-  font-size: 28px;
   line-height: 1.2;
   margin: 0;
+  font-size: $heading-size-mobile;
 
   @media (min-width: $bp-lg) {
     font-size: 42px;
@@ -35,9 +35,9 @@ h2 {
 h3 {
   font-family: $font-family;
   font-weight: 700;
-  font-size: 20px;
   line-height: 1.3;
   margin: 0;
+  font-size: $heading-size-mobile;
 
   @media (min-width: $bp-lg) {
     font-size: 24px;

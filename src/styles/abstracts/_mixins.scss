@@ -91,12 +91,20 @@
 // Large gradient section heading: "What can we do better...", "We have something to tell"
 // Margin is set per-context since it varies.
 
+@mixin heading-responsive($desktop-size, $mobile-size: $heading-size-mobile) {
+  font-size: $mobile-size;
+
+  @media (min-width: $bp-md) {
+    font-size: $desktop-size;
+  }
+}
+
 @mixin section-title-gradient {
   font-family: $font-family;
-  font-size: 38px;
   font-weight: 700;
-  line-height: 1.211;
   letter-spacing: 0;
+  line-height: 1.2;
+  @include heading-responsive(38px);
   @include gradient-text;
 }
 
@@ -195,9 +203,9 @@
 
 @mixin form-panel-title {
   font-family: $font-family;
-  font-size: 32px;
   font-weight: 700;
   line-height: 1.25;
+  @include heading-responsive(32px);
   @include gradient-text;
   margin: 0;
 }

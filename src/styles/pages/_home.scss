@@ -80,7 +80,6 @@
 
   &__title {
     color: $color-white;
-    font-size: 38px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
@@ -89,6 +88,7 @@
     max-width: 100%;
     margin: 0;
     padding: 0 30px;
+    @include heading-responsive(38px);
 
     @media (min-width: $bp-md) {
       padding: 0;
@@ -203,7 +203,6 @@
 
   &__list-item {
     font-family: $font-family;
-    font-size: 22px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
@@ -212,9 +211,9 @@
     text-align: left;
     cursor: pointer;
     transition: color 0.2s;
+    @include heading-responsive(38px);
 
     @media (min-width: $bp-lg) {
-      font-size: 38px;
       text-align: right;
       white-space: normal;
     }
@@ -265,12 +264,12 @@
 
   &__title {
     font-family: $font-family;
-    font-size: 30px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
     color: $color-white;
     margin: 0;
+    @include heading-responsive(38px);
   }
 
   &__text {
@@ -386,13 +385,13 @@
 
   &__item-title {
     font-family: $font-family;
-    font-size: 22px;
     font-weight: 700;
     line-height: 1.227;
     letter-spacing: 0;
     color: #24a3ff;
     margin: 0;
     transition: color 0.2s;
+    @include heading-responsive(22px, 22px);
   }
 
   &__item-text {
@@ -451,6 +450,14 @@
 
   &__slider {
     overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+
+    &--dragging {
+      cursor: grabbing;
+      touch-action: none;
+      user-select: none;
+    }
   }
 
   &__track {

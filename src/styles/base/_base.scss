@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 main {
@@ -74,14 +75,31 @@ a, button {
   to { width: 100%; }
 }
 
-// Scroll reveal
+// Scroll reveal (horizontal shift only on desktop — avoids page overflow on phone/tablet)
 [data-reveal] {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 
-  &[data-reveal="left"]  { transform: translateX(-44px); }
-  &[data-reveal="right"] { transform: translateX(44px); }
+  &[data-reveal="left"],
+  &[data-reveal="right"] {
+    @media (max-width: #{$bp-lg - 1px}) {
+      transform: translateY(30px);
+    }
+  }
+
+  &[data-reveal="left"] {
+    @media (min-width: $bp-lg) {
+      transform: translateX(-44px);
+    }
+  }
+
+  &[data-reveal="right"] {
+    @media (min-width: $bp-lg) {
+      transform: translateX(44px);
+    }
+  }
+
   &[data-reveal="scale"] { transform: scale(0.9) translateY(14px); }
 
   &.is-visible {

@@ -12,6 +12,7 @@
 .about-intro {
   padding: 132px $layout-pad-inline-sm $space-text-group;
   background-color: $color-white;
+  overflow-x: clip;
 
   @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
     padding: 280px $layout-pad-inline-md 60px;
@@ -27,6 +28,7 @@
     display: flex;
     flex-direction: column;
     gap: $space-text-group;
+    min-width: 0;
 
     @media (min-width: $bp-lg) {
       flex-direction: row;
@@ -44,12 +46,13 @@
 
   &__title {
     font-family: $font-family;
-    font-size: 38px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
     @include gradient-text;
     margin: 0;
+    overflow-wrap: break-word;
+    @include heading-responsive(38px);
   }
 
   &__body {
@@ -171,6 +174,9 @@
     letter-spacing: 0.25em;
     color: rgba($color-white, 0.85);
     white-space: nowrap;
+    max-width: calc(100% - #{$layout-pad-inline-sm * 2});
+    overflow: hidden;
+    text-overflow: ellipsis;
     pointer-events: none;
   }
 }
@@ -180,6 +186,7 @@
 .about-quality {
   padding: $space-text-group $layout-pad-inline-sm 60px;
   background-color: $color-white;
+  overflow-x: clip;
 
   @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
     padding: 60px $layout-pad-inline-md 80px;
@@ -195,6 +202,7 @@
     display: flex;
     flex-direction: column;
     gap: $space-text-group;
+    min-width: 0;
 
     @media (min-width: $bp-lg) {
       flex-direction: row;
@@ -208,6 +216,7 @@
     display: flex;
     flex-direction: column;
     gap: $space-text-group;
+    min-width: 0;
   }
 
   &__text {
@@ -224,11 +233,12 @@
 
   &__heading {
     font-family: $font-family;
-    font-size: 38px;
     font-weight: 700;
     line-height: 1.2;
     @include gradient-text;
     margin: 0;
+    overflow-wrap: break-word;
+    @include heading-responsive(38px);
   }
 }
 
@@ -237,6 +247,7 @@
 .achievements {
   padding: 60px $layout-pad-inline-sm 50px;
   background-color: #F5F5FA;
+  overflow-x: clip;
 
   @media (min-width: $bp-md) {
     padding: 60px $layout-pad-inline-md 50px;
@@ -248,6 +259,7 @@
     display: flex;
     flex-direction: column;
     gap: $space-text-group;
+    min-width: 0;
   }
 
   &__title {
@@ -257,11 +269,15 @@
 
   &__slider {
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
   &__track {
     display: flex;
     gap: 40px;
+    width: max-content;
+    max-width: none;
     transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.15, 1);
   }
 
@@ -294,34 +310,5 @@
     width: 14px;
     height: 14px;
     @include slider-dot-base;
-  }
-}
-
-// ─── REVEAL ANIMATION (about.js uses .is-revealed, main.js uses .is-visible) ─
-
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-
-  &.is-revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-[data-reveal="left"] {
-  transform: translateX(-24px);
-
-  &.is-revealed {
-    transform: translateX(0);
-  }
-}
-
-[data-reveal="right"] {
-  transform: translateX(24px);
-
-  &.is-revealed {
-    transform: translateX(0);
   }
 }
