@@ -124,7 +124,7 @@ function createPublicationItem(pub, extraOn) {
     : '';
 
   item.innerHTML = `
-    <a href="/publication.html?id=${pub.id}" class="publications__card-link">
+    <a href="publication.html?id=${pub.id}" class="publications__card-link">
       <article class="publications__card">
         ${cover}
         <div class="publications__card-body${pub.cover ? '' : ' publications__card-body--no-image'}">

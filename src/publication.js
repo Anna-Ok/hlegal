@@ -131,7 +131,7 @@ const recommended = publications
 const listEl = document.getElementById('pub-recommended-list');
 listEl.innerHTML = recommended.map((p, i) => `
   <li class="publications__item" data-reveal data-delay="${100 + i * 100}">
-    <a href="/publication.html?id=${p.id}" class="publications__card-link">
+    <a href="publication.html?id=${p.id}" class="publications__card-link">
       <article class="publications__card">
         ${p.cover
           ? `<div class="publications__card-image" style="background-image:url('${p.cover}');background-size:cover;background-position:center;"></div>`
